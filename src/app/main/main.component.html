@@ -1,0 +1,25 @@
+<div>
+    <form #searchFormAddress="ngForm" (ngSubmit)=(getLocationAddress(searchFormAddress))>
+        <label for="address">City or Address</label>
+        <input type="text" id="address" name="address" ngModel>
+        <button>Search</button>
+
+    </form>
+    <ol>
+        <li *ngFor="let item of trails; index as i">
+            <p>{{item.name}}</p>
+            <p>{{item.location}}</p>
+            <p></p>
+            <div>
+                <img *ngIf="item.imgSmall" class="imgs" src="{{item.imgSmall}}" alt="Trail img">
+                <img *ngIf="!item.imgSmall" class="imgs" src="../../assets/bill.jpg" alt="Trail img">
+                <p class="specs">Specs.</p>
+            </div>
+            <p>Difficulty:{{item.difficulty}}</p>
+            <p>Stars:{{item.stars}}</p>
+            <p>Votes:{{item.starVotes}}</p>
+        </li>
+    </ol>
+
+
+</div>
