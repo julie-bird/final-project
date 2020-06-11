@@ -11,6 +11,9 @@ export class ApiService {
   apiKeyGeocoding: string = "AIzaSyBggV5pQiJQ-M_n4frMX_JpMVxHsjsSVuo";
   apiUrlHike: string = "https://www.hikingproject.com/data/get-trails";
   apiUrlGeocoding: string = "https://maps.googleapis.com/maps/api/geocode/json";
+  birdAPI: string = "https://api.ebird.org/v2/data/obs/geo/recent";
+  birdAPIKey: string = "tn01p81100sf";
+
 
   getLocationLatLong(lat, long): any {
     return this.http.get(this.apiUrlHike, {
@@ -31,4 +34,17 @@ export class ApiService {
       },
     });
   };
+
+  getBirdData(lat: string, long: string): any {
+    return this.http.get(this.birdAPI, {
+      headers: {
+        'X-eBirdApiToken': this.birdAPIKey,
+      },
+      params: {
+        lat: lat,
+        lng: long,
+      }
+    });
+  }
+
 }
