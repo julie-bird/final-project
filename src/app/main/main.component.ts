@@ -12,6 +12,7 @@ export class MainComponent implements OnInit {
   trails: any = [];
   address: any = undefined;
   birdData: any = [];
+  weatherData: any = [];
   constructor(private service: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -29,6 +30,11 @@ export class MainComponent implements OnInit {
           console.log(res)
           this.birdData = res;
         });
+        this.service.getWeather(lat, long).subscribe((response) => {
+          console.log(response)
+          this.weatherData = response
+        })
+
       })
 
     })
