@@ -13,6 +13,8 @@ export class MainComponent implements OnInit {
   address: any = undefined;
   birdData: any = [];
   weatherData: any = [];
+  imageData: any = [];
+
   constructor(private service: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,9 +28,19 @@ export class MainComponent implements OnInit {
       this.service.getLocationLatLong(lat, long).subscribe((response) => {
         this.trails = response.trails;
         console.log(this.trails)
+
         this.service.getBirdData(lat, long).subscribe(res => {
           console.log(res)
           this.birdData = res;
+          this.birdData.forEach((search) => {
+            let bird = search.comName
+            this.service.getImages(bird).subscribe(res => {
+              console.log(res)
+              this.imageData = res;
+              console.log(this.imageData.hits[0].largeImageURL)
+            })
+          })
+          console.log(this.birdData[0])
         });
         this.service.getWeather(lat, long).subscribe((response) => {
           console.log(response)
