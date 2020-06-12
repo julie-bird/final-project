@@ -19,6 +19,9 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
+
   getLocationAddress(form: NgForm) {
     this.address = form.value.address;
     this.service.getLocationAddress(this.address).subscribe((response) => {
@@ -30,14 +33,15 @@ export class MainComponent implements OnInit {
         console.log(this.trails)
 
         this.service.getBirdData(lat, long).subscribe(res => {
-          console.log(res)
+          console.log("birds", res)
           this.birdData = res;
-          this.birdData.forEach((search) => {
-            let bird = search.comName
+          this.birdData.forEach((birdObj) => {
+            let bird = birdObj.comName
             this.service.getImages(bird).subscribe(res => {
-              console.log(res)
-              this.imageData = res;
-              console.log(this.imageData.hits[0].largeImageURL)
+              birdObj.img1 = res.hits[0].largeImageURL
+              birdObj.img2 = res.hits[1].largeImageURL
+              birdObj.img3 = res.hits[2].largeImageURL
+              console.log(res.hits[0].largeImageURL)
             })
           })
           console.log(this.birdData[0])

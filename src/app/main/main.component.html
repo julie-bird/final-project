@@ -20,10 +20,11 @@
       <p>Votes:{{item.starVotes}}</p>
     <li *ngFor="let bird of birdData; index as i">
       <p>{{bird?.comName}}</p>
+      <img src="{{bird?.img1}}">
+      <img src="{{bird?.img2}}">
+      <img src="{{bird?.img3}}">
     </li>
-    <li *ngFor="let image of imageData; index as i">
-      <img src="{{image.hits[0].largeImageURL}}">
-    </li>
+
 
   </ol>
 
