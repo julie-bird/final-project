@@ -18,23 +18,26 @@
       <p>Difficulty:{{item.difficulty}}</p>
       <p>Stars:{{item.stars}}</p>
       <p>Votes:{{item.starVotes}}</p>
-    <li *ngFor="let bird of birdData">
+    <li *ngFor="let bird of birdData; index as i">
       <p>{{bird?.comName}}</p>
+    </li>
+    <li *ngFor="let image of imageData; index as i">
+      <img src="{{image.hits[0].largeImageURL}}">
     </li>
 
   </ol>
 
-  <h2>{{ weatherData?.name }}</h2>
-  <img *ngIf="weatherData" />
+  <!-- <h2>{{ weatherData?.name }}</h2>
+  <img *ngIf="weatherData" /> -->
 
   <!-- weather image -->
   <!-- src="http://openweathermap.org/img/wn/{{ (weatherData.weather)[0].icon }}.png" -->
   <!-- alt="weather icon" -->
 
-  <p>Description: {{ weatherData?.weather[0].description }}</p>
+  <!-- <p>Description: {{ weatherData?.weather[0].description }}</p>
   <p>Current temp: {{ weatherData?.main.temp }}°F</p>
   <p>Feels like: {{ weatherData?.main.feels_like }}°F</p>
-  <p>Wind speed: {{ weatherData?.wind.speed }}mph</p>
+  <p>Wind speed: {{ weatherData?.wind.speed }}mph</p> -->
 
 
 </div>

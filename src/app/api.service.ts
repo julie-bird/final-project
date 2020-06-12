@@ -15,6 +15,8 @@ export class ApiService {
   birdAPIKey: string = "tn01p81100sf";
   weatherAPI: string = "ffa70af12adabe155d075948d06a9b14";
   weatherLatLong: string = "https://api.openweathermap.org/data/2.5/weather";
+  imagesAPIKey: string = "17012923-f8b2d7b5bfcad45724d0424c4";
+  imagesURL: string = "https://pixabay.com/api/";
 
 
   getLocationLatLong(lat, long): any {
@@ -52,6 +54,12 @@ export class ApiService {
   getWeather(lat: any, long: any): any {
     return this.http.get(this.weatherLatLong, {
       params: { appid: this.weatherAPI, lat: lat, lon: long }
+    });
+  }
+
+  getImages(search: string): any {
+    return this.http.get(this.imagesURL, {
+      params: { key: this.imagesAPIKey, q: search }
     });
   }
 
