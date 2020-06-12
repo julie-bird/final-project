@@ -17,6 +17,8 @@ export class ApiService {
   weatherLatLong: string = "https://api.openweathermap.org/data/2.5/weather";
   imagesAPIKey: string = "17012923-f8b2d7b5bfcad45724d0424c4";
   imagesURL: string = "https://pixabay.com/api/";
+  soundsURL: string = "http://localhost:3000/sound";
+
 
 
   getLocationLatLong(lat, long): any {
@@ -47,6 +49,7 @@ export class ApiService {
       params: {
         lat: lat,
         lng: long,
+        maxResults: "20"
       }
     });
   }
@@ -63,4 +66,9 @@ export class ApiService {
     });
   }
 
+  getSounds(sound: string): any {
+        return this.http.get(this.soundsURL, {
+      params: { query: sound }
+    });
+  }
 }

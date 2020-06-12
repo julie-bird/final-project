@@ -30,24 +30,25 @@ export class MainComponent implements OnInit {
 
       this.service.getLocationLatLong(lat, long).subscribe((response) => {
         this.trails = response.trails;
-        console.log(this.trails)
 
         this.service.getBirdData(lat, long).subscribe(res => {
-          console.log("birds", res)
           this.birdData = res;
           this.birdData.forEach((birdObj) => {
             let bird = birdObj.comName
             this.service.getImages(bird).subscribe(res => {
-              birdObj.img1 = res.hits[0].largeImageURL
-              birdObj.img2 = res.hits[1].largeImageURL
-              birdObj.img3 = res.hits[2].largeImageURL
-              console.log(res.hits[0].largeImageURL)
+              if (res.hits.length > 2) {
+                birdObj.img1 = res.hits[0].largeImageURL;
+                birdObj.img2 = res.hits[1].largeImageURL;
+                birdObj.img3 = res.hits[2].largeImageURL;
+              }
+            });
+            this.service.getSounds(bird).subscribe(res => {
+
+              birdObj.sound = res.recordings.file;
             })
           })
-          console.log(this.birdData[0])
         });
         this.service.getWeather(lat, long).subscribe((response) => {
-          console.log(response)
           this.weatherData = response
         })
 
