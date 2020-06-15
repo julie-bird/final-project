@@ -18,30 +18,33 @@
       <p>Difficulty:{{item.difficulty}}</p>
       <p>Stars:{{item.stars}}</p>
       <p>Votes:{{item.starVotes}}</p>
-    <li *ngFor="let bird of birdData; index as i">
-      <p>{{bird?.comName}}</p>
-      <img class="bird" src="{{bird?.img1}}">
-      <img class="bird" src="{{bird?.img2}}">
-      <img class="bird" src="{{bird?.img3}}">
-      <audio *ngIf="bird.sound" controls>
-        <source src={{bird?.sound}}>
-      </audio>
+      <ul>
+        <li *ngFor="let bird of item.trailBirds; index as i">
+          <p>{{bird?.comName}}</p>
+          <img class="bird" src="{{bird?.img1}}">
+          <img class="bird" src="{{bird?.img2}}">
+          <img class="bird" src="{{bird?.img3}}">
+          <audio *ngIf="bird.sound" controls>
+            <source src={{bird?.sound}}>
+          </audio>
+        </li>
+      </ul>
+      <h2>{{ item.weather?.name }}</h2>
+
+      <!-- weather image -->
+      <img *ngIf="item.weather" src="http://openweathermap.org/img/wn/{{ (item.weather.weather)[0].icon }}.png"
+        alt="weather icon">
+
+      <p>Description: {{ item.weather?.weather[0].description }}</p>
+      <p>Current temp: {{ item.weather?.main.temp }}°F</p>
+      <p>Feels like: {{ item.weather?.main.feels_like }}°F</p>
+      <p>Wind speed: {{ item.weather?.wind.speed }}mph</p>
     </li>
 
 
   </ol>
 
-  <!-- <h2>{{ weatherData?.name }}</h2>
-  <img *ngIf="weatherData" /> -->
 
-  <!-- weather image -->
-  <!-- src="http://openweathermap.org/img/wn/{{ (weatherData.weather)[0].icon }}.png" -->
-  <!-- alt="weather icon" -->
-
-  <!-- <p>Description: {{ weatherData?.weather[0].description }}</p>
-  <p>Current temp: {{ weatherData?.main.temp }}°F</p>
-  <p>Feels like: {{ weatherData?.main.feels_like }}°F</p>
-  <p>Wind speed: {{ weatherData?.wind.speed }}mph</p> -->
 
 
 </div>

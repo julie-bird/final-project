@@ -49,7 +49,7 @@ export class ApiService {
       params: {
         lat: lat,
         lng: long,
-        maxResults: "20"
+        maxResults: "5"
       }
     });
   }
@@ -67,7 +67,7 @@ export class ApiService {
   }
 
   getSounds(sound: string): any {
-        return this.http.get(this.soundsURL, {
+    return this.http.get(this.soundsURL, {
       params: { query: sound }
     });
   }

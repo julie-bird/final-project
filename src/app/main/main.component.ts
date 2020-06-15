@@ -30,30 +30,34 @@ export class MainComponent implements OnInit {
 
       this.service.getLocationLatLong(lat, long).subscribe((response) => {
         this.trails = response.trails;
-
-        this.service.getBirdData(lat, long).subscribe(res => {
-          this.birdData = res;
-          this.birdData.forEach((birdObj) => {
-            let bird = birdObj.comName
-            this.service.getImages(bird).subscribe(res => {
-              if (res.hits.length > 2) {
-                birdObj.img1 = res.hits[0].largeImageURL;
-                birdObj.img2 = res.hits[1].largeImageURL;
-                birdObj.img3 = res.hits[2].largeImageURL;
-              }
-            });
-            this.service.getSounds(bird).subscribe(res => {
-              if (res.recordings.length >= 1) {
-                birdObj.sound = res.recordings[0]["file"];
-                console.log(birdObj.sound)
-              }
+        this.trails.forEach(trail => {
+          let trailLat = trail.latitude;
+          let trailLon = trail.longitude;
+          this.service.getWeather(trailLat, trailLon).subscribe((response) => {
+            trail.weather = response
+          });
+          this.service.getBirdData(trailLat, trailLon).subscribe(res => {
+            // this.birdData = res;
+            trail.trailBirds = res;
+            console.log(res)
+            trail.trailBirds.forEach((birdObj) => {
+              let bird = birdObj.comName
+              this.service.getImages(bird).subscribe(res => {
+                if (res.hits.length > 2) {
+                  birdObj.img1 = res.hits[0].largeImageURL;
+                  birdObj.img2 = res.hits[1].largeImageURL;
+                  birdObj.img3 = res.hits[2].largeImageURL;
+                }
+              });
+              this.service.getSounds(bird).subscribe(res => {
+                if (res.recordings.length >= 1) {
+                  birdObj.sound = res.recordings[0]["file"];
+                  console.log(birdObj.sound)
+                }
+              })
             })
-          })
-        });
-        this.service.getWeather(lat, long).subscribe((response) => {
-          this.weatherData = response
+          });
         })
-
       })
 
     })
