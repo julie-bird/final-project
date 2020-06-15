@@ -43,8 +43,10 @@ export class MainComponent implements OnInit {
               }
             });
             this.service.getSounds(bird).subscribe(res => {
-
-              birdObj.sound = res.recordings.file;
+              if (res.recordings.length >= 1) {
+                birdObj.sound = res.recordings[0]["file"];
+                console.log(birdObj.sound)
+              }
             })
           })
         });

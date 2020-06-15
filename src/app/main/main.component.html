@@ -23,6 +23,9 @@
       <img class="bird" src="{{bird?.img1}}">
       <img class="bird" src="{{bird?.img2}}">
       <img class="bird" src="{{bird?.img3}}">
+      <audio *ngIf="bird.sound" controls>
+        <source src={{bird?.sound}}>
+      </audio>
     </li>
 
 
