@@ -14,10 +14,12 @@ export class MainComponent implements OnInit {
   birdData: any = [];
   weatherData: any = [];
   imageData: any = [];
+  newArray: any = [];
 
   constructor(private service: ApiService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.newArray = this.service.getSpotted();
   }
 
 
@@ -39,7 +41,7 @@ export class MainComponent implements OnInit {
           this.service.getBirdData(trailLat, trailLon).subscribe(res => {
             // this.birdData = res;
             trail.trailBirds = res;
-            console.log(res)
+            // console.log(res)
             trail.trailBirds.forEach((birdObj) => {
               let bird = birdObj.comName
               this.service.getImages(bird).subscribe(res => {
@@ -52,7 +54,7 @@ export class MainComponent implements OnInit {
               this.service.getSounds(bird).subscribe(res => {
                 if (res.recordings.length >= 1) {
                   birdObj.sound = res.recordings[0]["file"];
-                  console.log(birdObj.sound)
+                  // console.log(birdObj.sound)
                 }
               })
             })
@@ -61,5 +63,31 @@ export class MainComponent implements OnInit {
       })
 
     })
+  }
+
+  checkSpottedList(bird: any): boolean {
+    return this.newArray.some((listItem) => {
+      return listItem.comName === bird.comName;
+    })
+  }
+
+  addSpotted(bird: any): void {
+    let index = null;
+    if (this.newArray.length === 0) {
+      bird.isClicked = true;
+      this.service.pushSpotted(bird)
+    } else {
+      index = this.newArray.findIndex((birdIndex) => {
+        return birdIndex.comName === bird.comName;
+      });
+      
+      if (this.checkSpottedList(bird)) {
+        this.service.removeSpotted(index)
+        bird.isClicked = false;
+      } else {
+        bird.isClicked = true;
+        this.service.pushSpotted(bird)
+      }
+    };
   }
 }

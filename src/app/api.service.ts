@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-
+  spottedList: any = [];
   constructor(private http: HttpClient) { }
   apiKeyHike: string = '200792556-481bb23f6f36faf871c6cc7118c51171';
   apiKeyGeocoding: string = "AIzaSyBggV5pQiJQ-M_n4frMX_JpMVxHsjsSVuo";
@@ -70,5 +70,17 @@ export class ApiService {
     return this.http.get(this.soundsURL, {
       params: { query: sound }
     });
+  }
+
+  pushSpotted(bird: any): void {
+    this.spottedList.push(bird);
+    console.log(this.spottedList)
+  }
+
+  removeSpotted(index: number): void {
+    this.spottedList.splice(index, 1);
+  }
+  getSpotted(): any {
+    return this.spottedList
   }
 }
