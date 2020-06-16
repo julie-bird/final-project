@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { SpottedComponent } from './spotted/spotted.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SpottedComponent } from './spotted/spotted.component';
     AppComponent,
     HeaderComponent,
     MainComponent,
-    SpottedComponent
+    SpottedComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

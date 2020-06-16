@@ -1,3 +1,57 @@
-.bird{
-    width: 50px;
+.bird {
+  width: 50px;
+}
+
+.search-container {
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-search {
+  font-size: 2rem;
+  display: flex;
+}
+
+.main-search-input {
+  border: none;
+  border-bottom: solid 1px black;
+  width: 400px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.trail-stats {
+  display: none;
+}
+
+.statsShown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hideButton {
+  display: none;
+}
+
+
+.bird-info {
+  display: none;
+}
+
+.birdStats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hideBirdButton {
+  display: none;
+}
+
+.BirdButton {
+  display: flex;
 }

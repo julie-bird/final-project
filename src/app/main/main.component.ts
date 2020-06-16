@@ -91,4 +91,37 @@ export class MainComponent implements OnInit {
       }
     };
   }
+
+  seeTrailStats(trail: any) {
+    trail.statsShown = true;
+    trail.statsButtonClicked = true;
+    trail.button = true
+    console.log(trail)
+  }
+
+  hideTrailStats(trail: any) {
+    trail.statsShown = false;
+    trail.statsButtonClicked = false;
+    trail.button = false
+
+  }
+
+  seeBirdInfo(birdArray: any) {
+    birdArray.forEach((bird) => {
+      bird.statsShown = true;
+      bird.statsButtonClicked = true;
+      bird.button = true
+      console.log(bird)
+    })
+  }
+
+  hideBirdInfo(birdArray: any) {
+    birdArray.forEach((bird) => {
+      bird.statsShown = false;
+      bird.statsButtonClicked = false;
+      bird.button = false
+      console.log(bird)
+    })
+  }
+
 }
