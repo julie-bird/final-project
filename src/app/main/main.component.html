@@ -32,7 +32,8 @@
       </div>
       <button class="trail-stats-button" (click)="seeTrailStats(item)" [ngClass]="{'hideButton' : item.button}">
         Show More Trail Info</button>
-
+      <button class="bird-info-button" (click)="seeBirdInfo(item.trailBirds)"
+        [ngClass]="{'hideBirdButton' : item.trailBirds.button}">More Bird Info</button>
       <ul class="bird-info" [ngClass]="{'birdStats' : item.trailBirds.statsShown}">
         <li *ngFor="let bird of item.trailBirds; index as i">
           <div>
@@ -46,13 +47,11 @@
             </audio>
           </div>
         </li>
+        <button (click)="hideBirdInfo(item.trailBirds)" [ngClass]="{'BirdButton' : item.trailBirds.statsShown}"> Hide
+          Details
+        </button>
       </ul>
-      <button (click)="hideBirdInfo(item.trailBirds)" [ngClass]="{'BirdButton' : item.trailBirds.statsShown}"> Hide
-        Details
-      </button>
-      <button class="bird-info-button" (click)="seeBirdInfo(item.trailBirds)"
-        [ngClass]="{'hideBirdButton' : item.button}">
-        Show More Info </button>
+
 
       <h2>{{ item.weather?.name }}</h2>
 
