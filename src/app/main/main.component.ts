@@ -116,4 +116,15 @@ export class MainComponent implements OnInit {
     bird.button = false
   }
 
+  seeWeatherInfo(weather: any) {
+    weather.statsShown = true;
+    weather.button = true
+    console.log(weather)
+  }
+
+  hideWeatherInfo(weather: any) {
+    weather.statsShown = false;
+    weather.button = false
+
+  }
 }
