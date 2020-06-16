@@ -33,8 +33,8 @@
       <button class="trail-stats-button" (click)="seeTrailStats(item)" [ngClass]="{'hideButton' : item.button}">
         Show More Trail Info</button>
       <button class="bird-info-button" (click)="seeBirdInfo(item.trailBirds)"
-        [ngClass]="{'hideBirdButton' : item.trailBirds.button}">More Bird Info</button>
-      <ul class="bird-info" [ngClass]="{'birdStats' : item.trailBirds.statsShown}">
+        [ngClass]="{'hideBirdButton' : item.trailBirds?.button}">More Bird Info</button>
+      <ul class="bird-info" [ngClass]="{'birdStats' : item.trailBirds?.statsShown}">
         <li *ngFor="let bird of item.trailBirds; index as i">
           <div>
             <p>{{bird?.comName}}</p>
@@ -47,25 +47,28 @@
             </audio>
           </div>
         </li>
-        <button (click)="hideBirdInfo(item.trailBirds)" [ngClass]="{'BirdButton' : item.trailBirds.statsShown}"> Hide
+        <button (click)="hideBirdInfo(item.trailBirds)" [ngClass]="{'BirdButton' : item.trailBirds?.statsShown}"> Hide
           Details
         </button>
       </ul>
 
+      <div class="weather-info" [ngClass]="{'weatherShown' : item.weather?.statsShown}">
+        <h2>{{ item.weather?.name }}</h2>
 
-      <h2>{{ item.weather?.name }}</h2>
+        <!-- weather image -->
+        <img *ngIf="item.weather" src="http://openweathermap.org/img/wn/{{ (item.weather.weather)[0].icon }}.png"
+          alt="weather icon">
 
-      <!-- weather image -->
-      <img *ngIf="item.weather" src="http://openweathermap.org/img/wn/{{ (item.weather.weather)[0].icon }}.png"
-        alt="weather icon">
-
-      <p>Description: {{ item.weather?.weather[0].description }}</p>
-      <p>Current temp: {{ item.weather?.main.temp }}°F</p>
-      <p>Feels like: {{ item.weather?.main.feels_like }}°F</p>
-      <p>Wind speed: {{ item.weather?.wind.speed }}mph</p>
+        <p>Description: {{ item.weather?.weather[0].description }}</p>
+        <p>Current temp: {{ item.weather?.main.temp }}°F</p>
+        <p>Feels like: {{ item.weather?.main.feels_like }}°F</p>
+        <p>Wind speed: {{ item.weather?.wind.speed }}mph</p>
+        <button (click)="hideWeatherInfo(item.weather)" [ngClass]="{'showWeatherButton' : item.weather?.statsShown}">
+          Hide Details </button>
+      </div>
+      <button (click)="seeWeatherInfo(item.weather)" [ngClass]="{'hideWeatherButton':item.weather?.button}">Show Weather
+        Info</button>
     </li>
-
-
   </ol>
 
 

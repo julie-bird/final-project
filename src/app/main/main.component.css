@@ -55,3 +55,18 @@
 .BirdButton {
   display: flex;
 }
+.weather-info{
+  display: none;
+}
+.weatherShown{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hideWeatherButton{
+  display: none;
+}
+.showWeatherButton{
+  display: flex;
+}
+
