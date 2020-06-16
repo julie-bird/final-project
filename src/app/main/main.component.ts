@@ -31,6 +31,7 @@ export class MainComponent implements OnInit {
       let long = response.results[0].geometry.location.lng
 
       this.service.getLocationLatLong(lat, long).subscribe((response) => {
+        console.log(response)
         this.trails = response.trails;
         this.trails.forEach(trail => {
           let trailLat = trail.latitude;
@@ -80,7 +81,7 @@ export class MainComponent implements OnInit {
       index = this.newArray.findIndex((birdIndex) => {
         return birdIndex.comName === bird.comName;
       });
-      
+
       if (this.checkSpottedList(bird)) {
         this.service.removeSpotted(index)
         bird.isClicked = false;

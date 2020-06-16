@@ -18,6 +18,11 @@
       <p>Difficulty:{{item.difficulty}}</p>
       <p>Stars:{{item.stars}}</p>
       <p>Votes:{{item.starVotes}}</p>
+      <p>Summary:{{item.summary}}</p>
+      <p>Length:{{item.length}}</p>
+      <p>Condition:{{item.conditionDetails}}</p>
+      <p>Condition Date:{{item.conditionDate}}</p>
+      <p>Condition Status:{{item.conditionStatus}}</p>
       <ul>
         <li *ngFor="let bird of item.trailBirds; index as i">
           <p>{{bird?.comName}}</p>
