@@ -1,5 +1,5 @@
 .bird {
-  width: 50px;
+  width: 100px;
 }
 
 .search-container {
@@ -22,7 +22,79 @@
   font-size: 1.5rem;
   font-family: 'Montserrat', sans-serif;
 }
-
+.hike-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.hike-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid #3b5a9d;
+  width: 60%;
+  margin: 15px 0;
+  padding: 20px;
+  background-color: #e7d2a2;
+  border-radius: 6px;
+  box-shadow: 0 0 10px gray;
+}
+.hike-title {
+  overflow: hidden;
+}
+.imgs {
+  max-width: 350px;
+  border: 1px solid black;
+}
+.hike-summary {
+  text-align: center;
+}
+.info-buttons-div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+.info-buttons {
+  margin: 5px 7px;
+  background-color: #e7d2a2;
+  border: none;
+  padding: 5px;
+}
+.info-buttons:hover {
+  border-bottom: 1px solid black;
+}
+.extra-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3b5a9d;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 20px;
+  width: 80%;
+}
+.bird-container {
+  margin: 15px 0;
+  border-bottom: 1px solid black;
+  width: 400px;
+}
+.bird-title {
+  display: flex;
+  justify-content: space-around;
+}
+.bird-images {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0;
+}
+.audio-div {
+  display: flex;
+  justify-content: center;
+}
+.bird-audio {
+  height: 35px;
+  margin: 10px 0;
+}
 .trail-stats {
   display: none;
 }
