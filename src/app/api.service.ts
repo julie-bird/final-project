@@ -5,10 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
+  pickedTrail: any = {};
   spottedList: any = [];
   constructor(private http: HttpClient) { }
   apiKeyHike: string = '200792556-481bb23f6f36faf871c6cc7118c51171';
-  apiKeyGeocoding: string = "AIzaSyBggV5pQiJQ-M_n4frMX_JpMVxHsjsSVuo";
+  apiKeyGeocoding: string = "AIzaSyA1D73WmT9GhjzVFdj_s7v2XEJ-W_I6bI0";
   apiUrlHike: string = "https://www.hikingproject.com/data/get-trails";
   apiUrlGeocoding: string = "https://maps.googleapis.com/maps/api/geocode/json";
   birdAPI: string = "https://api.ebird.org/v2/data/obs/geo/recent";
@@ -21,7 +22,7 @@ export class ApiService {
 
 
 
-  getLocationLatLong(lat, long): any {
+  getTrails(lat, long): any {
     return this.http.get(this.apiUrlHike, {
       params: {
         lat: lat,
@@ -82,5 +83,14 @@ export class ApiService {
   }
   getSpotted(): any {
     return this.spottedList
+  }
+
+  setTrail(trail): any {
+    this.pickedTrail = trail;
+    console.log(this.pickedTrail)
+  }
+
+  getTrail(): any {
+    return this.pickedTrail
   }
 }

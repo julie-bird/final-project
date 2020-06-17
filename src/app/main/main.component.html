@@ -1,6 +1,6 @@
 <div>
   <div class="search-container">
-    <form class="main-search" #searchFormAddress="ngForm" (ngSubmit)=(getLocationAddress(searchFormAddress))>
+    <form class="main-search" #searchFormAddress="ngForm" (ngSubmit)=(getLocationAndTrails(searchFormAddress))>
       <label for="address"></label>
       <input class="main-search-input" type="text" id="address" name="address"
         placeholder="Where Would You Like to Hike?" ngModel>
@@ -8,6 +8,7 @@
     </form>
   </div>
 
+  <!-- trail starts -->
   <ol>
     <li *ngFor="let item of trails; index as i">
       <h1>{{item.name}}</h1>
@@ -18,6 +19,7 @@
         <img *ngIf="!item.imgSmall" class="imgs" src="../../assets/bill.jpg" alt="Trail img">
         <p class="specs">Specs.</p>
       </div>
+      <button (click)="trailOverviewPath(item.name)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>
 
       <div class="trail-stats" [ngClass]="{'statsShown' : item.statsShown}">
@@ -32,9 +34,11 @@
       </div>
       <button class="trail-stats-button" (click)="seeTrailStats(item)" [ngClass]="{'hideButton' : item.button}">
         Show More Trail Info</button>
-      <button class="bird-info-button" (click)="seeBirdInfo(item.trailBirds)"
-        [ngClass]="{'hideBirdButton' : item.trailBirds?.button}">More Bird Info</button>
-      <ul class="bird-info" [ngClass]="{'birdStats' : item.trailBirds?.statsShown}">
+
+      <!-- bird starts -->
+      <button class="bird-info-button" (click)="seeBirdInfo(i)" *ngIf="birdIndex != i">More Bird Info</button>
+
+      <ul *ngIf="birdIndex == i">
         <li *ngFor="let bird of item.trailBirds; index as i">
           <div>
             <p>{{bird?.comName}}</p>
@@ -47,12 +51,15 @@
             </audio>
           </div>
         </li>
-        <button (click)="hideBirdInfo(item.trailBirds)" [ngClass]="{'BirdButton' : item.trailBirds?.statsShown}"> Hide
+
+        <button (click)="hideBirdInfo()"> Hide
           Details
         </button>
+
       </ul>
 
-      <div class="weather-info" [ngClass]="{'weatherShown' : item.weather?.statsShown}">
+      <!-- weather starts -->
+      <div *ngIf="weatherIndex == i">
         <h2>{{ item.weather?.name }}</h2>
 
         <!-- weather image -->
@@ -63,15 +70,11 @@
         <p>Current temp: {{ item.weather?.main.temp }}°F</p>
         <p>Feels like: {{ item.weather?.main.feels_like }}°F</p>
         <p>Wind speed: {{ item.weather?.wind.speed }}mph</p>
-        <button (click)="hideWeatherInfo(item.weather)" [ngClass]="{'showWeatherButton' : item.weather?.statsShown}">
+        <button (click)="hideWeatherInfo()">
           Hide Details </button>
       </div>
-      <button (click)="seeWeatherInfo(item.weather)" [ngClass]="{'hideWeatherButton':item.weather?.button}">Show Weather
-        Info</button>
+      <button (click)="seeWeatherInfo(i)" *ngIf="weatherIndex != i">Show Weather Info</button>
     </li>
   </ol>
-
-
-
 
 </div>

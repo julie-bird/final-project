@@ -15,6 +15,8 @@ export class MainComponent implements OnInit {
   weatherData: any = [];
   imageData: any = [];
   newArray: any = [];
+  birdIndex: number = null;
+  weatherIndex: number = null;
 
   constructor(private service: ApiService, private router: Router, private route: ActivatedRoute) { }
 
@@ -24,47 +26,74 @@ export class MainComponent implements OnInit {
 
 
 
-  getLocationAddress(form: NgForm) {
+  getLocationAndTrails(form: NgForm) {
     this.address = form.value.address;
     this.service.getLocationAddress(this.address).subscribe((response) => {
       let lat = response.results[0].geometry.location.lat
       let long = response.results[0].geometry.location.lng
 
-      this.service.getLocationLatLong(lat, long).subscribe((response) => {
+      this.service.getTrails(lat, long).subscribe((response) => {
         console.log(response)
         this.trails = response.trails;
-        this.trails.forEach(trail => {
-          let trailLat = trail.latitude;
-          let trailLon = trail.longitude;
-          this.service.getWeather(trailLat, trailLon).subscribe((response) => {
-            trail.weather = response
-          });
-          this.service.getBirdData(trailLat, trailLon).subscribe(res => {
-            // this.birdData = res;
-            trail.trailBirds = res;
-            // console.log(res)
-            trail.trailBirds.forEach((birdObj) => {
-              let bird = birdObj.comName
-              this.service.getImages(bird).subscribe(res => {
-                if (res.hits.length > 2) {
-                  birdObj.img1 = res.hits[0].largeImageURL;
-                  birdObj.img2 = res.hits[1].largeImageURL;
-                  birdObj.img3 = res.hits[2].largeImageURL;
-                }
-              });
-              this.service.getSounds(bird).subscribe(res => {
-                if (res.recordings.length >= 1) {
-                  birdObj.sound = res.recordings[0]["file"];
-                  // console.log(birdObj.sound)
-                }
-              })
-            })
-          });
+      })
+    })
+  };
+
+  // Weather Methods
+
+  seeWeatherInfo(index: number) {
+    this.weatherIndex = index;
+    this.getTrailWeather(index)
+  }
+
+  hideWeatherInfo() {
+    this.weatherIndex = null;
+  }
+
+  getTrailWeather(index: number) {
+    let trailLat = this.trails[index].latitude;
+    let trailLon = this.trails[index].longitude;
+    this.service.getWeather(trailLat, trailLon).subscribe((response) => {
+      this.trails[index].weather = response
+    });
+  };
+
+  // Bird Methods
+
+  seeBirdInfo(index: number) {
+    this.birdIndex = index;
+    this.getBirdData(index)
+  }
+
+  hideBirdInfo() {
+    this.birdIndex = null;
+  }
+
+  getBirdData(index: number) {
+    let trailLat = this.trails[index].latitude;
+    let trailLon = this.trails[index].longitude;
+    this.service.getBirdData(trailLat, trailLon).subscribe(res => {
+      this.trails[index].trailBirds = res;
+      this.trails[index].trailBirds.forEach((birdObj) => {
+        let bird = birdObj.comName
+        this.service.getImages(bird).subscribe(res => {
+          if (res.hits.length > 2) {
+            birdObj.img1 = res.hits[0].largeImageURL;
+            birdObj.img2 = res.hits[1].largeImageURL;
+            birdObj.img3 = res.hits[2].largeImageURL;
+          }
+        });
+        this.service.getSounds(bird).subscribe(res => {
+          if (res.recordings.length >= 1) {
+            birdObj.sound = res.recordings[0]["file"];
+          }
         })
       })
-
-    })
+    });
+    console.log(this.trails)
   }
+
+  // Spotted List Methods
 
   checkSpottedList(bird: any): boolean {
     return this.newArray.some((listItem) => {
@@ -101,30 +130,10 @@ export class MainComponent implements OnInit {
   hideTrailStats(trail: any) {
     trail.statsShown = false;
     trail.button = false
-
   }
 
-  seeBirdInfo(bird: any) {
-    bird.statsShown = true;
-    bird.statsButtonClicked = true;
-    bird.button = true
+  trailOverviewPath(name: string) {
+    this.router.navigate(["trail-overview"], { queryParams: { trailname: name } })
   }
 
-  hideBirdInfo(bird: any) {
-    bird.statsShown = false;
-    bird.statsButtonClicked = false;
-    bird.button = false
-  }
-
-  seeWeatherInfo(weather: any) {
-    weather.statsShown = true;
-    weather.button = true
-    console.log(weather)
-  }
-
-  hideWeatherInfo(weather: any) {
-    weather.statsShown = false;
-    weather.button = false
-
-  }
 }

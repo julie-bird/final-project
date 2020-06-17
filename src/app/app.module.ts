@@ -8,6 +8,7 @@ import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { SpottedComponent } from './spotted/spotted.component';
 import { AboutComponent } from './about/about.component';
+import { TrailOverviewComponent } from './trail-overview/trail-overview.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { AboutComponent } from './about/about.component';
     HeaderComponent,
     MainComponent,
     SpottedComponent,
-    AboutComponent
+    AboutComponent,
+    TrailOverviewComponent
   ],
   imports: [
     BrowserModule,
