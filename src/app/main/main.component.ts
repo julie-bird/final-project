@@ -132,8 +132,7 @@ export class MainComponent implements OnInit {
     trail.button = false
   }
 
-  trailOverviewPath(name: string) {
-    this.router.navigate(["trail-overview"], { queryParams: { trailname: name } })
+  trailOverviewPath(name: string,id:number) {
+    this.router.navigate(["trail-overview"], { queryParams: { trailname: name, trailid:id } })
   }
-
 }

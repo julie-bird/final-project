@@ -19,7 +19,7 @@
         <img *ngIf="!item.imgSmall" class="imgs" src="../../assets/bill.jpg" alt="Trail img">
         <p class="specs">Specs.</p>
       </div>
-      <button (click)="trailOverviewPath(item.name)">Trail Overview</button>
+      <button (click)="trailOverviewPath(item.name,item.id)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>
 
       <div class="trail-stats" [ngClass]="{'statsShown' : item.statsShown}">
