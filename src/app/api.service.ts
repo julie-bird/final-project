@@ -66,13 +66,13 @@ export class ApiService {
 
   getWeather(lat: any, long: any): any {
     return this.http.get(this.weatherLatLong, {
-      params: { appid: this.weatherAPI, lat: lat, lon: long }
+      params: { appid: this.weatherAPI, lat: lat, lon: long, units: "Imperial" }
     });
   }
 
   getImages(search: string): any {
     return this.http.get(this.imagesURL, {
-      params: { key: this.imagesAPIKey, q: search }
+      params: { key: this.imagesAPIKey, q: search, image_type: "photo", safesearch: "true" }
     });
   }
 

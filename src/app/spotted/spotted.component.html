@@ -1,8 +1,10 @@
-<ul>
-    <li *ngFor="let bird of spottedList; index as i">
-        <p>{{bird?.comName}}</p>
-        <img class="bird" src="{{bird?.img1}}">
-        <button (click)="removeBird(bird)">"o"</button>
+<div class="bird-list-div">
+    <ul>
+        <li *ngFor="let bird of spottedList; index as i">
+            <p class="name">{{bird?.comName}}</p>
+            <img class="image" src="{{bird?.img1}}">
+            <button (click)="removeBird(bird)">x</button>
 
-    </li>
-</ul>
+        </li>
+    </ul>
+</div>

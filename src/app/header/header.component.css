@@ -1,6 +1,23 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #56b5ad;
+  padding: 20px;
+}
+.logo {
+  width: 100px;
+}
 .nav-list {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
   list-style: none;
+}
+.nav-link {
+  color: black;
+  margin: 0 10px;
+}
+.nav-link:hover {
+  border-bottom: 1px solid black;
 }
