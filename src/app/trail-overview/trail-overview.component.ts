@@ -9,9 +9,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TrailOverviewComponent implements OnInit {
   pickedTrail: any;
+  spottedArray: any = [];
   constructor(private service: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.spottedArray = this.service.getSpotted();
     this.route.queryParams.subscribe(response1 => {
 
       this.service.getTrailsById(response1.trailid).subscribe(response2 => {
@@ -49,7 +51,33 @@ export class TrailOverviewComponent implements OnInit {
     })
   }
 
+  // Spotted List Methods
 
+  checkSpottedList(bird: any): boolean {
+    return this.spottedArray.some((listItem) => {
+      return listItem.comName === bird.comName;
+    })
+  }
+
+  addSpotted(bird: any): void {
+    let index = null;
+    if (this.spottedArray.length === 0) {
+      bird.isClicked = true;
+      this.service.pushSpotted(bird)
+    } else {
+      index = this.spottedArray.findIndex((birdIndex) => {
+        return birdIndex.comName === bird.comName;
+      });
+
+      if (this.checkSpottedList(bird)) {
+        this.service.removeSpotted(index)
+        bird.isClicked = false;
+      } else {
+        bird.isClicked = true;
+        this.service.pushSpotted(bird)
+      }
+    };
+  }
 
 
 
