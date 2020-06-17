@@ -1,1 +1,55 @@
-<p>trail-overview works!</p>
+<div>
+
+    <h1>{{pickedTrail.name}}</h1>
+    <p>{{pickedTrail.location}}</p>
+    <p></p>
+    <div>
+        <img *ngIf="pickedTrail.imgSmall" class="imgs" src="{{pickedTrail.imgSmall}}" alt="Trail img">
+        <img *ngIf="!pickedTrail.imgSmall" class="imgs" src="../../assets/bill.jpg" alt="Trail img">
+        <p class="specs">Specs.</p>
+    </div>
+    <p>Stars:{{pickedTrail.stars}}</p>
+
+    <div>
+        <p>Difficulty:{{pickedTrail.difficulty}}</p>
+        <p>Votes:{{pickedTrail.starVotes}}</p>
+        <p>Summary:{{pickedTrail.summary}}</p>
+        <p>Length:{{pickedTrail.length}}</p>
+        <p>Condition:{{pickedTrail.conditionDetails}}</p>
+        <p>Condition Date:{{pickedTrail.conditionDate}}</p>
+        <p>Condition Status:{{pickedTrail.conditionStatus}}</p>
+    </div>
+
+    <!-- bird starts -->
+
+    <ul>
+        <li *ngFor="let bird of pickedTrail.trailBirds; index as i">
+            <div>
+                <p>{{bird?.comName}}</p>
+                <img class="bird" src="{{bird?.img1}}">
+                <img class="bird" src="{{bird?.img2}}">
+                <img class="bird" src="{{bird?.img3}}">
+                <!-- <button (click)="addSpotted(bird)">"o"</button> -->
+                <audio *ngIf="bird.sound" controls>
+                    <source src={{bird?.sound}}>
+                </audio>
+            </div>
+        </li>
+    </ul>
+
+    <!-- weather starts -->
+    <div>
+        <h2>{{ pickedTrail.weather?.name }}</h2>
+
+        <!-- weather image -->
+        <img *ngIf="pickedTrail.weather"
+            src="http://openweathermap.org/img/wn/{{ (pickedTrail.weather.weather)[0].icon }}.png" alt="weather icon">
+
+        <p>Description: {{ pickedTrail.weather?.weather[0].description }}</p>
+        <p>Current temp: {{ pickedTrail.weather?.main.temp }}°F</p>
+        <p>Feels like: {{ pickedTrail.weather?.main.feels_like }}°F</p>
+        <p>Wind speed: {{ pickedTrail.weather?.wind.speed }}mph</p>
+    </div>
+
+
+</div>

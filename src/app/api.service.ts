@@ -19,7 +19,7 @@ export class ApiService {
   imagesAPIKey: string = "17012923-f8b2d7b5bfcad45724d0424c4";
   imagesURL: string = "https://pixabay.com/api/";
   soundsURL: string = "http://localhost:3000/sound";
-
+  getTrailIdURL: string = "https://www.hikingproject.com/data/get-trails-by-id"
 
 
   getTrails(lat, long): any {
@@ -27,6 +27,15 @@ export class ApiService {
       params: {
         lat: lat,
         lon: long,
+        key: this.apiKeyHike
+      },
+    });
+  };
+
+  getTrailsById(id): any {
+    return this.http.get(this.getTrailIdURL, {
+      params: {
+        ids: id,
         key: this.apiKeyHike
       },
     });
