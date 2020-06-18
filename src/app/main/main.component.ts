@@ -36,6 +36,7 @@ export class MainComponent implements OnInit {
         console.log(response)
         this.trails = response.trails;
       })
+      this.router.navigate(["home"], { queryParams: { location: this.address } })
     })
   };
 
@@ -106,6 +107,7 @@ export class MainComponent implements OnInit {
     if (this.newArray.length === 0) {
       bird.isClicked = true;
       this.service.pushSpotted(bird)
+      bird.addSpotted = true;
     } else {
       index = this.newArray.findIndex((birdIndex) => {
         return birdIndex.comName === bird.comName;
@@ -117,6 +119,7 @@ export class MainComponent implements OnInit {
       } else {
         bird.isClicked = true;
         this.service.pushSpotted(bird)
+        bird.addSpotted = true;
       }
     };
   }
@@ -132,7 +135,7 @@ export class MainComponent implements OnInit {
     trail.button = false
   }
 
-  trailOverviewPath(name: string,id:number) {
-    this.router.navigate(["trail-overview"], { queryParams: { trailname: name, trailid:id } })
+  trailOverviewPath(name: string, id: number) {
+    this.router.navigate(["trail-overview"], { queryParams: { trailname: name, trailid: id } })
   }
 }

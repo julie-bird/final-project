@@ -3,21 +3,37 @@
   justify-content: space-between;
   align-items: center;
   background-color: #56b5ad;
-  padding: 20px;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  border-bottom: solid 4px rgba(128, 128, 128, 0.521);
+  border-radius: 0px 0px 15px 15px;
 }
+
 .logo {
-  width: 100px;
+  width: 50px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
+
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
 .nav-list {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
   list-style: none;
 }
+
 .nav-link {
   color: black;
   margin: 0 10px;
 }
+
 .nav-link:hover {
   border-bottom: 1px solid black;
 }
