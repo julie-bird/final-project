@@ -1,11 +1,23 @@
 .bird-list-div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .name {
-    font-size: 30px;
+  font-size: 30px;
 }
-.image{
-    width: 200px;
+
+.image {
+  width: 200px;
+}
+
+.bird-item {
+  border: solid 1px black;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  padding: 15px 0;
 }

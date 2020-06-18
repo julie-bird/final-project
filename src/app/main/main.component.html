@@ -16,7 +16,7 @@
       <p></p>
       <div>
         <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail img">
-        <img *ngIf="!item.imgMedium" class="imgs" src="../../assets/bill.jpg" alt="Trail img">
+        <img *ngIf="!item.imgMedium" class="imgs" src="../../assets/default-trail.jpg" alt="Default Trail Image">
       </div>
       <button (click)="trailOverviewPath(item.name,item.id)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>
@@ -43,7 +43,8 @@
         <li class="bird-container" *ngFor="let bird of item.trailBirds; index as i">
           <div class="bird-title">
             <p>{{bird?.comName}}</p>
-            <button (click)="addSpotted(bird)">Spotted!</button>
+            <button class="spotted-button" (click)="addSpotted(bird)"><i class="fa fa-binoculars" aria-hidden="true"
+                [ngClass]="{'spotted' : bird.addSpotted}"></i></button>
           </div>
           <div class="bird-images">
             <img class="bird" src="{{bird?.img1}}">
