@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   background-color: #56b5ad;
@@ -9,6 +10,11 @@
   width: 100%;
   border-bottom: solid 4px rgba(128, 128, 128, 0.521);
   border-radius: 0px 0px 15px 15px;
+  z-index: 1;
+}
+.logo-text{
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .logo {
@@ -21,12 +27,15 @@
   display: flex;
   align-items: center;
 }
-
+.nav-container{
+  width:100%
+}
 .nav-list {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
   list-style: none;
+  margin-top: 10px;  
 }
 
 .nav-link {
@@ -37,3 +46,12 @@
 .nav-link:hover {
   border-bottom: 1px solid black;
 }
+ @media screen and (min-width: 768px){
+  
+  .header {
+    flex-direction:row;    
+  }  
+  .nav-container{
+    width: auto;
+  }
+ }

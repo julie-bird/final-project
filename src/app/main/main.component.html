@@ -4,7 +4,7 @@
       <label for="address"></label>
       <input class="main-search-input" type="text" id="address" name="address"
         placeholder="Where Would You Like to Hike?" ngModel>
-      <button><i class="fas fa-search"></i></button>
+      <button class="search-button" title="Search for trails"><i class="fas fa-search"></i></button>
     </form>
   </div>
 
@@ -15,7 +15,8 @@
       <p>{{item.location}}</p>
       <p></p>
       <div>
-        <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail img">
+        <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail image"
+          title="Image of {{item.name}} Trail">
         <img *ngIf="!item.imgMedium" class="imgs" src="../../assets/default-trail.jpg" alt="Default Trail Image">
       </div>
       <button (click)="trailOverviewPath(item.name,item.id)">Trail Overview</button>
@@ -47,9 +48,9 @@
                 [ngClass]="{'spotted' : bird.addSpotted}"></i></button>
           </div>
           <div class="bird-images">
-            <img class="bird" src="{{bird?.img1}}">
-            <img class="bird" src="{{bird?.img2}}">
-            <img class="bird" src="{{bird?.img3}}">
+            <img class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}" title="Image of {{bird.comName}}">
+            <img class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}" title="Image of {{bird.comName}}">
+            <img class="bird" src="{{bird?.img3}}" alt="Image of {{bird.comName}}" title="Image of {{bird.comName}}">
           </div>
           <div class="audio-div">
             <audio class="bird-audio" *ngIf="bird.sound" controls>
