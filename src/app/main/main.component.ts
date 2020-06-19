@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.newArray = this.service.getSpotted();
+    console.log(this.newArray)
   }
 
 
@@ -36,7 +37,6 @@ export class MainComponent implements OnInit {
       let long = response.results[0].geometry.location.lng
 
       this.service.getTrails(lat, long).subscribe((response) => {
-        console.log(response)
         this.trails = response.trails;
       })
       this.router.navigate(["home"], { queryParams: { location: this.address } })
@@ -78,7 +78,9 @@ export class MainComponent implements OnInit {
     let trailLon = this.trails[index].longitude;
     this.service.getBirdData(trailLat, trailLon).subscribe(res => {
       this.trails[index].trailBirds = res;
+      console.log(this.trails[index].trailBirds)
       this.trails[index].trailBirds.forEach((birdObj) => {
+        console.log(birdObj)
         let bird = birdObj.comName
         this.service.getImages(bird).subscribe(res => {
           if (res.hits.length > 2) {
@@ -92,9 +94,15 @@ export class MainComponent implements OnInit {
             birdObj.sound = res.recordings[0]["file"];
           }
         })
+        this.newArray.forEach((object) => {
+          if (object.comName === bird) {
+            birdObj.addSpotted = true;
+            console.log(object)
+          }
+        })
       })
     });
-    console.log(this.trails)
+    // console.log(this.trails)
   }
 
   // Spotted List Methods
@@ -115,7 +123,6 @@ export class MainComponent implements OnInit {
       index = this.newArray.findIndex((birdIndex) => {
         return birdIndex.comName === bird.comName;
       });
-
       if (this.checkSpottedList(bird)) {
         this.service.removeSpotted(index)
         bird.isClicked = false;
@@ -125,12 +132,13 @@ export class MainComponent implements OnInit {
         bird.addSpotted = true;
       }
     };
+    console.log(bird)
   }
 
   seeTrailStats(trail: any) {
     trail.statsShown = true;
     trail.button = true
-    console.log(trail)
+    // console.log(trail)
   }
 
   hideTrailStats(trail: any) {
@@ -152,5 +160,6 @@ export class MainComponent implements OnInit {
     }
     this.prevScrollpos = currentScrollPos;
   }
+
 
 }

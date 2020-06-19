@@ -19,9 +19,10 @@
 }
 
 
-.logo-text{
+.logo-text {
   font-size: 1.5rem;
   font-weight: bold;
+  color: black;
 }
 
 .logo {
@@ -34,15 +35,17 @@
   display: flex;
   align-items: center;
 }
-.nav-container{
-  width:100%
+
+.nav-container {
+  width: 100%
 }
+
 .nav-list {
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
   list-style: none;
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 
 .nav-link {
@@ -53,12 +56,14 @@
 .nav-link:hover {
   border-bottom: 1px solid black;
 }
- @media screen and (min-width: 768px){
-  
+
+@media screen and (min-width: 768px) {
+
   .header {
-    flex-direction:row;    
-  }  
-  .nav-container{
+    flex-direction: row;
+  }
+
+  .nav-container {
     width: auto;
   }
- }
+}
