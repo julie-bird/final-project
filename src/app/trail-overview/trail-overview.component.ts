@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TrailOverviewComponent implements OnInit {
   pickedTrail: any;
   spottedArray: any = [];
+  prevScrollpos = window.pageYOffset;
   constructor(private service: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -64,6 +65,7 @@ export class TrailOverviewComponent implements OnInit {
     if (this.spottedArray.length === 0) {
       bird.isClicked = true;
       this.service.pushSpotted(bird)
+      bird.addSpotted = true;
     } else {
       index = this.spottedArray.findIndex((birdIndex) => {
         return birdIndex.comName === bird.comName;
@@ -75,8 +77,20 @@ export class TrailOverviewComponent implements OnInit {
       } else {
         bird.isClicked = true;
         this.service.pushSpotted(bird)
+        bird.addSpotted = true;
       }
     };
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(e) {
+    let currentScrollPos = window.pageYOffset;
+    if (this.prevScrollpos > currentScrollPos) {
+      document.getElementById("navbar").style.top = "0";
+    } else {
+      document.getElementById("navbar").style.top = "-100px";
+    }
+    this.prevScrollpos = currentScrollPos;
   }
 
 

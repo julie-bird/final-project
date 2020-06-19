@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { SpottedComponent } from './spotted/spotted.component';
 import { AboutComponent } from './about/about.component';
 import { TrailOverviewComponent } from './trail-overview/trail-overview.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { TrailOverviewComponent } from './trail-overview/trail-overview.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

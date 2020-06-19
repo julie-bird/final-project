@@ -26,8 +26,8 @@
       <li class="bird-container" *ngFor="let bird of pickedTrail.trailBirds; index as i">
         <div class="bird-title">
           <p>{{bird?.comName}}</p>
-          <button class="spotted-button" (click)="addSpotted(bird)"><i class="fa fa-binoculars"
-              aria-hidden="true"></i></button>
+          <button class="spotted-button" (click)="addSpotted(bird)"><i class="fa fa-binoculars" aria-hidden="true"
+              [ngClass]="{'spotted' : bird.addSpotted}"></i></button>
         </div>
         <div class="bird-images">
           <img class="image" src="{{bird?.img1}}">
