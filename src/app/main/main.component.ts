@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { trigger, state, transition, style, animate } from '@angular/animations';
+import { DOCUMENT } from '@angular/common';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -17,8 +19,9 @@ export class MainComponent implements OnInit {
   newArray: any = [];
   birdIndex: number = null;
   weatherIndex: number = null;
+  prevScrollpos = window.pageYOffset;
 
-  constructor(private service: ApiService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private service: ApiService, private router: Router, private route: ActivatedRoute, @Inject(DOCUMENT) document) { }
 
   ngOnInit(): void {
     this.newArray = this.service.getSpotted();
@@ -138,4 +141,16 @@ export class MainComponent implements OnInit {
   trailOverviewPath(name: string, id: number) {
     this.router.navigate(["trail-overview"], { queryParams: { trailname: name, trailid: id } })
   }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(e) {
+    let currentScrollPos = window.pageYOffset;
+    if (this.prevScrollpos > currentScrollPos) {
+      document.getElementById("navbar").style.top = "0";
+    } else {
+      document.getElementById("navbar").style.top = "-100px";
+    }
+    this.prevScrollpos = currentScrollPos;
+  }
+
 }

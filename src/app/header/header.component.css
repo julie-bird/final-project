@@ -11,7 +11,14 @@
   border-bottom: solid 4px rgba(128, 128, 128, 0.521);
   border-radius: 0px 0px 15px 15px;
   z-index: 1;
+  transition: top 0.3s;
 }
+
+.sticky {
+  display: none;
+}
+
+
 .logo-text{
   font-size: 1.5rem;
   font-weight: bold;

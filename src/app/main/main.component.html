@@ -1,4 +1,4 @@
-<div>
+<div (scroll)="onWindowScroll($event)">
   <div class="search-container">
     <form class="main-search" #searchFormAddress="ngForm" (ngSubmit)=(getLocationAndTrails(searchFormAddress))>
       <label for="address"></label>

@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  prevScrollpos = window.pageYOffset;
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
 
 }
