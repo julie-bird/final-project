@@ -7,10 +7,21 @@
         placeholder="Where Would You Like to Hike?" ngModel>
       <button class="search-button" title="Search for trails"><i class="fas fa-search"></i></button>
     </form>
+    <div class="img-summary-container">
+      <div class="main-img-container">
+        <img class="bird-watching-img" src="/assets/bird-watching.png" alt="" srcset="">
+      </div>
+      <div class="main-header-container">
+        <h1 class="main-header">Grab your binoculars!</h1>
+        <h2 class="sub-header">Search for a location to bird-watch and add birds to your spotted list as you find them.
+          Happy bird watching!
+        </h2>
+      </div>
+    </div>
   </div>
 
   <!-- trail starts -->
-  <ol class="hike-list">
+  <ol class="hike-list" id="hike-list">
     <li *ngFor="let item of trails; index as i" class="hike-box">
       <h1 class="hike-title">{{item.name}}</h1>
       <h3 class="hike-city">{{item.location}}</h3>
@@ -18,7 +29,7 @@
       <div>
         <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail image"
           title="Image of {{item.name}} Trail">
-        <img *ngIf="!item.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image">
+        <!-- <img *ngIf="!item.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image"> -->
       </div>
       <button (click)="trailOverviewPath(item.name,item.id)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>

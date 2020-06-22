@@ -11,18 +11,47 @@ position: fixed;
   font-size: 8px;
   object-fit: contain;
 }
+.bird-watching-img{
+  max-height: 200px;
+}
+.main-header{
+  display: flex;
+}
+.main-header-container{
+  background-color: #e7d2a2;
+  border: 1px solid #e7d2a2;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+}
+.main-header{
+  justify-content: center;
+  padding-bottom: 10px;
+}
+.sub-header{
+  font-size: 1rem;
+}
 
 .search-container {
-  height: 150px;
+  height: 80vh;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 
+}
+.img-summary-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .main-search {
   font-size: 2rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
 }
 
 .main-search-input {
@@ -240,4 +269,30 @@ position: fixed;
   color: #9dc863;
 }
 
-@media screen and (min-width: 768px) {}
+@media screen and (min-width: 768px) {
+
+  .img-summary-container{
+    flex-direction: row-reverse;
+    position: relative;
+  }
+  .main-header{
+    justify-content: left;
+  }
+  .sub-header{
+    width: 65%;
+  }
+  .bird-watching-img{
+    position: absolute;
+    top: -28%;
+    right: 10%;
+  }
+  .main-search-input {
+    width: 750px;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .fa-search {
+    font-size: 46px;
+    }
+}
