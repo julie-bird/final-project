@@ -72,7 +72,7 @@ export class ApiService {
 
   getImages(search: string): any {
     return this.http.get(this.imagesURL, {
-      params: { key: this.imagesAPIKey, q: search, image_type: "photo", safesearch: "true" }
+      params: { key: this.imagesAPIKey, q: search, image_type: "photo", safesearch: "true", category: "nature" }
     });
   }
 
