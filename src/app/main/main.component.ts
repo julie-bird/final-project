@@ -19,7 +19,6 @@ export class MainComponent implements OnInit {
   newArray: any = [];
   birdIndex: number = null;
   weatherIndex: number = null;
-  prevScrollpos = window.pageYOffset;
   trailImgArray = ["/assets/hike1.jpg", "/assets/hike2.jpg", "/assets/hike3.jpg", "/assets/hike4.jpg", "/assets/hike5.jpg", "/assets/default-trail.jpg"]
 
   constructor(private service: ApiService, private router: Router, private route: ActivatedRoute, @Inject(DOCUMENT) document) { }
@@ -38,17 +37,14 @@ export class MainComponent implements OnInit {
       let long = response.results[0].geometry.location.lng
       this.service.getTrails(lat, long).subscribe((response) => {
         this.trails = response.trails;
-        if (!response.trails.imgMedium) {
-          this.choosePic()
-        }
       })
       this.router.navigate(["home"], { queryParams: { location: this.address } })
     })
   };
 
-  choosePic() {
+  choosePic(): string {
     let randomNum = Math.floor((Math.random() * this.trailImgArray.length));
-    (<HTMLImageElement>document.querySelector(".default-img")).src = this.trailImgArray[randomNum];
+    return this.trailImgArray[randomNum];
   }
 
   // Weather Methods
@@ -158,16 +154,7 @@ export class MainComponent implements OnInit {
     this.router.navigate(["trail-overview"], { queryParams: { trailname: name, trailid: id } })
   }
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
-    let currentScrollPos = window.pageYOffset;
-    if (this.prevScrollpos > currentScrollPos) {
-      document.getElementById("navbar").style.top = "0";
-    } else {
-      document.getElementById("navbar").style.top = "-100px";
-    }
-    this.prevScrollpos = currentScrollPos;
-  }
+
 
 
 }
