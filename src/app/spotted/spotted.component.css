@@ -5,8 +5,15 @@
   margin-top: 100px;
 }
 
+.bird-images-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .name {
-  font-size: 30px;
+  font-size: 1.2rem;
+  font-family: 'Permanent Marker', cursive;
 }
 
 .image {
@@ -15,10 +22,34 @@
 
 .bird-item {
   border: solid 1px black;
-  border-radius: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px 0;
-  padding: 15px 0;
+  margin: 10px 10px;
+  padding: 15px 15px;
+  width: 200px;
+  justify-content: space-between;
+  background-color: white;
+  -webkit-box-shadow: 10px 10px 24px -12px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 24px -12px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 24px -12px rgba(0, 0, 0, 0.75);
+}
+
+.polaroid {
+  padding: 5px 5px 10px 5px;
+}
+
+li:hover {
+  transform: scale(1.25);
+  /* scale: (1.25); */
+  position: relative;
+  /* z-index: 5; */
+}
+
+.remove-button {
+  background-color: rgb(153, 25, 25);
+  color: white;
+  border: solid 1px white;
+  padding: 5px;
+  border-radius: 12px;
 }

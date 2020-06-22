@@ -13,7 +13,7 @@
   <ol class="hike-list">
     <li *ngFor="let item of trails; index as i" class="hike-box">
       <h1 class="hike-title">{{item.name}}</h1>
-      <p>{{item.location}}</p>
+      <h3 class="hike-city">{{item.location}}</h3>
       <p></p>
       <div>
         <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail image"
@@ -44,7 +44,7 @@
       <ul class="extra-info" *ngIf="birdIndex == i">
         <li class="bird-container" *ngFor="let bird of item.trailBirds; index as i">
           <div class="bird-title">
-            <p>{{bird?.comName}}</p>
+            <h3 class="bird-name">{{bird?.comName}}</h3>
             <button class="spotted-button" (click)="addSpotted(bird)"><i class="fa fa-binoculars" aria-hidden="true"
                 [ngClass]="{'spotted' : bird.addSpotted}"></i></button>
           </div>
