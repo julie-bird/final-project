@@ -18,7 +18,7 @@
       <div>
         <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail image"
           title="Image of {{item.name}} Trail">
-        <img *ngIf="!item.imgMedium" class="imgs default-img" id="hikePicture" src="" alt="Default Trail Image">
+        <img *ngIf="!item.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image">
       </div>
       <button (click)="trailOverviewPath(item.name,item.id)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>

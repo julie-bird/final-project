@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 export class TrailOverviewComponent implements OnInit {
   pickedTrail: any;
   spottedArray: any = [];
-  prevScrollpos = window.pageYOffset;
   constructor(private service: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -80,17 +79,6 @@ export class TrailOverviewComponent implements OnInit {
         bird.addSpotted = true;
       }
     };
-  }
-
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
-    let currentScrollPos = window.pageYOffset;
-    if (this.prevScrollpos > currentScrollPos) {
-      document.getElementById("navbar").style.top = "0";
-    } else {
-      document.getElementById("navbar").style.top = "-100px";
-    }
-    this.prevScrollpos = currentScrollPos;
   }
 
 
