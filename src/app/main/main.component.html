@@ -18,7 +18,7 @@
       <div>
         <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail image"
           title="Image of {{item.name}} Trail">
-        <img *ngIf="!item.imgMedium" class="imgs" src="../../assets/default-trail.jpg" alt="Default Trail Image">
+        <img *ngIf="!item.imgMedium" class="imgs default-img" id="hikePicture" src="" alt="Default Trail Image">
       </div>
       <button (click)="trailOverviewPath(item.name,item.id)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>
@@ -49,9 +49,14 @@
                 [ngClass]="{'spotted' : bird.addSpotted}"></i></button>
           </div>
           <div class="bird-images">
-            <img class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}" title="Image of {{bird.comName}}">
-            <img class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}" title="Image of {{bird.comName}}">
-            <img class="bird" src="{{bird?.img3}}" alt="Image of {{bird.comName}}" title="Image of {{bird.comName}}">
+            <img *ngIf="bird?.img1" class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}"
+              title="Image of {{bird.comName}}">
+            <img *ngIf="!bird?.img1" class="bird" src="/assets/bird-text.JPG" alt="Image of {{bird.comName}}"
+              title="Image of {{bird.comName}}">
+            <img *ngIf="bird?.img2" class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}"
+              title="Image of {{bird.comName}}">
+            <img *ngIf="bird?.img3" class="bird" src="{{bird?.img3}}" alt="Image of {{bird.comName}}"
+              title="Image of {{bird.comName}}">
           </div>
           <div class="audio-div">
             <audio class="bird-audio" *ngIf="bird.sound" controls>

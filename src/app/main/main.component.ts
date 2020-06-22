@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
   birdIndex: number = null;
   weatherIndex: number = null;
   prevScrollpos = window.pageYOffset;
+  trailImgArray = ["/assets/hike1.jpg", "/assets/hike2.jpg", "/assets/hike3.jpg", "/assets/hike4.jpg", "/assets/hike5.jpg", "/assets/default-trail.jpg"]
 
   constructor(private service: ApiService, private router: Router, private route: ActivatedRoute, @Inject(DOCUMENT) document) { }
 
@@ -35,13 +36,20 @@ export class MainComponent implements OnInit {
     this.service.getLocationAddress(this.address).subscribe((response) => {
       let lat = response.results[0].geometry.location.lat
       let long = response.results[0].geometry.location.lng
-
       this.service.getTrails(lat, long).subscribe((response) => {
         this.trails = response.trails;
+        if (!response.trails.imgMedium) {
+          this.choosePic()
+        }
       })
       this.router.navigate(["home"], { queryParams: { location: this.address } })
     })
   };
+
+  choosePic() {
+    let randomNum = Math.floor((Math.random() * this.trailImgArray.length));
+    (<HTMLImageElement>document.querySelector(".default-img")).src = this.trailImgArray[randomNum];
+  }
 
   // Weather Methods
 
@@ -83,7 +91,7 @@ export class MainComponent implements OnInit {
         console.log(birdObj)
         let bird = birdObj.comName
         this.service.getImages(bird).subscribe(res => {
-          if (res.hits.length > 2) {
+          if (res.hits.length > 0) {
             birdObj.img1 = res.hits[0].largeImageURL;
             birdObj.img2 = res.hits[1].largeImageURL;
             birdObj.img3 = res.hits[2].largeImageURL;
