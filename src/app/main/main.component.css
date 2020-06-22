@@ -83,7 +83,7 @@ position: fixed;
 
 
 .imgs {
-  /* max-width: 350px; */
+  max-height: 500px;
   max-width: 100%;
   height: auto;
   border: 1px solid black;
