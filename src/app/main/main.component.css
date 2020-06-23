@@ -11,24 +11,30 @@ position: fixed;
   font-size: 8px;
   object-fit: contain;
 }
-.bird-watching-img{
+
+.bird-watching-img {
   max-height: 200px;
 }
-.main-header{
+
+.main-header {
   display: flex;
 }
-.main-header-container{
+
+.main-header-container {
   background-color: #e7d2a2;
   border: 1px solid #e7d2a2;
   border-radius: 15px;
   padding: 10px;
   margin: 10px;
+  box-shadow: 0 0 10px gray;
 }
-.main-header{
+
+.main-header {
   justify-content: center;
   padding-bottom: 10px;
 }
-.sub-header{
+
+.sub-header {
   font-size: 1rem;
 }
 
@@ -40,7 +46,8 @@ position: fixed;
   justify-content: center;
 
 }
-.img-summary-container{
+
+.img-summary-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -134,10 +141,12 @@ position: fixed;
   background-color: #e7d2a2;
   border: none;
   padding: 5px;
+  font-size: .8rem;
 }
 
 .info-buttons:hover {
   border-bottom: 1px solid black;
+  border-radius: 0px;
 }
 
 .extra-info {
@@ -271,28 +280,37 @@ position: fixed;
 
 @media screen and (min-width: 768px) {
 
-  .img-summary-container{
+  .img-summary-container {
     flex-direction: row-reverse;
     position: relative;
   }
-  .main-header{
+
+  .main-header {
     justify-content: left;
   }
-  .sub-header{
+
+  .sub-header {
     width: 65%;
   }
-  .bird-watching-img{
+
+  .bird-watching-img {
     position: absolute;
     top: -28%;
     right: 10%;
   }
+
   .main-search-input {
     width: 750px;
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
   }
+
   .fa-search {
     font-size: 46px;
-    }
+  }
+
+  .search-button {
+    padding-bottom: 25px;
+  }
 }
