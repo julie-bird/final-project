@@ -1,11 +1,13 @@
 <div class="background-container"></div>
-<div>
+<div class="main-container">
   <div class="search-container">
     <form class="main-search" #searchFormAddress="ngForm" (ngSubmit)=(getLocationAndTrails(searchFormAddress))>
       <label for="address"></label>
       <input class="main-search-input" type="text" id="address" name="address"
         placeholder="Where Would You Like to Hike?" ngModel>
-      <button class="search-button" title="Search for trails"><i class="fas fa-search"></i></button>
+      <button class="search-button" title="Search for trails"><i class="fas fa-search"
+          (click)="scrollToElement(target)">
+        </i></button>
     </form>
     <div class="img-summary-container">
       <div class="main-img-container">
@@ -21,7 +23,7 @@
   </div>
 
   <!-- trail starts -->
-  <ol class="hike-list" id="hike-list">
+  <ol class="hike-list" id="hike-list" #target>
     <li *ngFor="let item of trails; index as i" class="hike-box">
       <h1 class="hike-title">{{item.name}}</h1>
       <h3 class="hike-city">{{item.location}}</h3>
@@ -74,15 +76,18 @@
           </div>
           <div class="bird-images">
             <img *ngIf="bird?.img1" class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}"
-              title="Image of {{bird.comName}}">
+              title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img1)">
             <img *ngIf="!bird?.img1" class="bird" src="/assets/bird-text.JPG" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}">
-            <img *ngIf="bird?.img2" class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}"
-              title="Image of {{bird.comName}}">
-            <img *ngIf="bird?.img3" class="bird" src="{{bird?.img3}}" alt="Image of {{bird.comName}}"
-              title="Image of {{bird.comName}}">
+            <img *ngIf=" bird?.img2" class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}"
+              title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img2)">
+            <img *ngIf=" bird?.img3" class="bird" src="{{bird?.img3}}" alt="Image of {{bird.comName}}"
+              title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img3)">
           </div>
-          <div class="audio-div">
+          <div [ngClass]="{'background-full-pic' : birdPicUrl}">
+            <img class="hide-pic" [src]="birdPicUrl" [ngClass]="{'full-pic' : birdPicUrl}" (click)="hideBirdPic()">
+          </div>
+          <div class=" audio-div">
             <audio class="bird-audio" *ngIf="bird.sound" controls>
               <source src={{bird?.sound}}>
             </audio>

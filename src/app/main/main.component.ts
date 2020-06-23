@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { trigger, state, transition, style, animate } from '@angular/animations';
 import { DOCUMENT } from '@angular/common';
+import { element } from 'protractor';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -18,6 +19,7 @@ export class MainComponent implements OnInit {
   imageData: any = [];
   newArray: any = [];
   birdIndex: number = null;
+  birdPicUrl: string = null;
   weatherIndex: number = null;
   trailImgArray = ["/assets/hike1.jpg", "/assets/hike2.jpg", "/assets/hike3.jpg", "/assets/hike4.jpg", "/assets/hike5.jpg", "/assets/default-trail.jpg"]
 
@@ -38,8 +40,15 @@ export class MainComponent implements OnInit {
         })
       }
     })
+
+
+
   }
 
+  scrollToElement($element): void {
+    console.log($element);
+    $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+  }
 
 
   getLocationAndTrails(form: NgForm) {
@@ -51,6 +60,8 @@ export class MainComponent implements OnInit {
         this.trails = response.trails;
       })
       this.router.navigate(["home"], { queryParams: { location: this.address } })
+      // $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
     })
   };
 
@@ -87,6 +98,14 @@ export class MainComponent implements OnInit {
 
   hideBirdInfo() {
     this.birdIndex = null;
+  }
+
+  seeBirdPic(pic: string) {
+    this.birdPicUrl = pic;
+  }
+
+  hideBirdPic() {
+    this.birdPicUrl = null;
   }
 
   getBirdData(index: number) {
