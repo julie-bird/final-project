@@ -41,18 +41,31 @@
           Info</button>
         <button class="info-buttons" (click)="seeWeatherInfo(i)" *ngIf="weatherIndex != i">Show Weather Info</button>
       </div>
-      <div class="trail-stats extra-info" [ngClass]="{'statsShown' : item.statsShown}">
-        <p>Difficulty:{{item.difficulty}}</p>
-        <p>Votes:{{item.starVotes}}</p>
-        <p class="hike-summary">Summary:{{item.summary}}</p>
-        <p>Length:{{item.length}}</p>
-        <p>Condition:{{item.conditionDetails}}</p>
-        <p>Condition Date:{{item.conditionDate}}</p>
-        <p>Condition Status:{{item.conditionStatus}}</p>
+      <div class="trail-stats extra-trail-info" [ngClass]="{'statsShown' : item.statsShown}">
+        <h3 class="trail-info-summary-header">Summary</h3>
+        <p class="hike-summary">{{item.summary}}</p>
+        <div class="trail-data-container">
+          <div class="trail-data-attribute">
+            <p>Difficulty: </p>
+            <p>Votes:</p>
+            <p>Length:</p>
+            <p>Condition:</p>
+            <p>Condition Date:</p>
+            <p>Condition Status:</p>
+          </div>
+          <div class="trail-data-value">
+            <p>{{item.difficulty}}</p>
+            <p>{{item.starVotes}}</p>
+            <p>{{item.length}}</p>
+            <p>{{item.conditionDetails}}</p>
+            <p>{{item.conditionDate}}</p>
+            <p>{{item.conditionStatus}}</p>
+          </div>
+        </div>
         <button (click)="hideTrailStats(item)" [ngClass]="{'trailStats' : item.trailStats}"> Hide Details </button>
       </div>
       <!-- bird starts -->
-      <ul class="extra-info" *ngIf="birdIndex == i">
+      <ul class="extra-bird-info" *ngIf="birdIndex == i">
         <li class="bird-container" *ngFor="let bird of item.trailBirds; index as i">
           <div class="bird-title">
             <h3 class="bird-name">{{bird?.comName}}</h3>
@@ -83,7 +96,7 @@
       </ul>
 
       <!-- weather starts -->
-      <div class="extra-info" *ngIf="weatherIndex == i">
+      <div class="extra-weather-info" *ngIf="weatherIndex == i">
         <h2>{{ item.weather?.name }}</h2>
 
         <!-- weather image -->
