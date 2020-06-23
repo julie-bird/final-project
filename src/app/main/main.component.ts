@@ -26,6 +26,18 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.newArray = this.service.getSpotted();
     console.log(this.newArray)
+
+    this.route.queryParams.subscribe((response) => {
+      if (response.location) {
+        this.service.getLocationAddress(response.location).subscribe((response) => {
+          let lat = response.results[0].geometry.location.lat
+          let long = response.results[0].geometry.location.lng
+          this.service.getTrails(lat, long).subscribe((response) => {
+            this.trails = response.trails;
+          })
+        })
+      }
+    })
   }
 
 
@@ -150,8 +162,8 @@ export class MainComponent implements OnInit {
     trail.button = false
   }
 
-  trailOverviewPath(name: string, id: number) {
-    this.router.navigate(["trail-overview"], { queryParams: { trailname: name, trailid: id } })
+  trailOverviewPath(name: string, id: number, location: string) {
+    this.router.navigate(["trail-overview"], { queryParams: { trailname: name, trailid: id, location: location } })
   }
 
 

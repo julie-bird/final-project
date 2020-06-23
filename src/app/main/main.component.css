@@ -76,7 +76,7 @@ position: fixed;
 }
 
 .search-button {
-  padding: 4px;
+
   border-radius: 50px;
   border: none;
   background-color: rgba(255, 255, 255, 0);
@@ -91,7 +91,7 @@ position: fixed;
 }
 
 .fa-search {
-  font-size: 20px;
+  font-size: 24px;
   color: #a4a4a4;
 }
 
@@ -123,11 +123,13 @@ position: fixed;
   color: white;
   align-items: flex-start;
 }
-.trail-info-summary-header{
+
+.trail-info-summary-header {
   border-bottom: 1px solid white;
   margin-bottom: .5rem;
 }
-.trail-data-container{
+
+.trail-data-container {
   display: flex;
 }
 
@@ -135,17 +137,20 @@ position: fixed;
   text-align: center;
   margin-bottom: 1rem;
 }
-.trail-data-attribute{
-margin-right: 1rem;
-font-weight: bold
+
+.trail-data-attribute {
+  margin-right: 1rem;
+  font-weight: bold
 }
 
-.trail-data-value{
+.trail-data-value {
   font-size: 0.9rem;
 }
-.trail-data-value > p{
+
+.trail-data-value>p {
   margin-bottom: 0.1rem;
 }
+
 .extra-trail-info {
   flex-direction: column;
   align-items: center;
@@ -156,7 +161,7 @@ font-weight: bold
   max-width: 350px;
   color: rgb(209, 209, 209);
   margin-bottom: 1rem;
-  
+
 }
 
 .imgs {
@@ -203,7 +208,7 @@ font-weight: bold
 .bird-container {
   margin: 15px 0;
   border-bottom: 1px solid black;
-  
+
 }
 
 .bird-title {
@@ -262,6 +267,7 @@ font-weight: bold
 .BirdButton {
   display: flex;
 }
+
 .extra-weather-info {
   display: flex;
   flex-direction: column;
@@ -272,7 +278,7 @@ font-weight: bold
   padding: 20px;
   max-width: 350px;
   color: rgb(209, 209, 209);
-  margin-bottom: 1rem;  
+  margin-bottom: 1rem;
 }
 
 .weather-info {
@@ -340,10 +346,19 @@ font-weight: bold
     width: 65%;
   }
 
+  .fa-search {
+    font-size: 46px;
+  }
+
+  .search-button {
+    padding-bottom: 23px;
+  }
+
   .bird-container {
     width: 400px;
   }
-  .bird-watching-img{
+
+  .bird-watching-img {
     position: absolute;
     top: -28%;
     right: 10%;
