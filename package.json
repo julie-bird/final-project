@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod && cd dist/final-project && mv index.html 200.html && surge . --domain https://birds-eye-view.surge.sh"
   },
   "private": true,
   "dependencies": {

@@ -77,7 +77,7 @@ export class ApiService {
   }
 
   getSounds(sound: string): any {
-    return this.http.get(this.soundsURL, {
+    return this.http.get(`${this.soundsURL}/sound`, {
       params: { query: sound }
     });
   }

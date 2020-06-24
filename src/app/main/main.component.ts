@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Inject } from '@angular/core';
+import { Component, OnInit, HostListener, Inject, ViewChildren } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -11,6 +11,7 @@ import { element } from 'protractor';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
+  @ViewChildren("card") cards: any;
   data: any;
   trails: any = [];
   address: any = undefined;
@@ -27,7 +28,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.newArray = this.service.getSpotted();
-    console.log(this.newArray)
+    // console.log(this.newArray)
 
     this.route.queryParams.subscribe((response) => {
       if (response.location) {
@@ -40,14 +41,19 @@ export class MainComponent implements OnInit {
         })
       }
     })
-
-
-
   }
 
-  scrollToElement($element): void {
-    console.log($element);
-    $element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+  ngAfterViewInit() {
+    // this.scrollToElement();
+    console.log(this.cards)
+    
+  }
+
+  scrollToElement(): void {
+    console.log(this.cards);
+    console.log(this.cards._results[0])
+    this.cards._results[0].nativeElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+
   }
 
 

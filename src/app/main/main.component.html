@@ -5,8 +5,7 @@
       <label for="address"></label>
       <input class="main-search-input" type="text" id="address" name="address"
         placeholder="Where Would You Like to Hike?" ngModel>
-      <button class="search-button" title="Search for trails"><i class="fas fa-search"
-          (click)="scrollToElement(target)">
+      <button class="search-button" title="Search for trails"><i class="fas fa-search">
         </i></button>
     </form>
     <div class="img-summary-container">
@@ -24,7 +23,7 @@
 
   <!-- trail starts -->
   <ol class="hike-list" id="hike-list" #target>
-    <li *ngFor="let item of trails; index as i" class="hike-box">
+    <li #card *ngFor="let item of trails; index as i" class="hike-box">
       <h1 class="hike-title">{{item.name}}</h1>
       <h3 class="hike-city">{{item.location}}</h3>
       <p></p>
