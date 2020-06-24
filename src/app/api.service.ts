@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +18,7 @@ export class ApiService {
   weatherLatLong: string = "https://api.openweathermap.org/data/2.5/weather";
   imagesAPIKey: string = "17012923-f8b2d7b5bfcad45724d0424c4";
   imagesURL: string = "https://pixabay.com/api/";
-  soundsURL: string = "http://localhost:3000/sound";
+  soundsURL: string = environment.apiBaseUrl;
   getTrailIdURL: string = "https://www.hikingproject.com/data/get-trails-by-id"
 
 
