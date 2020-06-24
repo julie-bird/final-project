@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TrailOverviewComponent implements OnInit {
   pickedTrail: any;
   spottedArray: any = [];
+  birdPicUrl: string = "";
   constructor(private service: ApiService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -81,7 +82,13 @@ export class TrailOverviewComponent implements OnInit {
     };
   }
 
+  seeBirdPic(pic: string) {
+    this.birdPicUrl = pic;
+  }
 
+  hideBirdPic() {
+    this.birdPicUrl = null;
+  }
 
 
 }

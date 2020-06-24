@@ -1,49 +1,73 @@
+<!-- ********** -->
+
+
 <div class="hike-list">
   <div class="hike-box">
 
+
     <h1 class="hike-title">{{pickedTrail.name}}</h1>
-    <p>{{pickedTrail.location}}</p>
+    <h3 class="hike-city">{{pickedTrail.location}}</h3>
     <p></p>
     <div>
-      <img *ngIf="pickedTrail.imgSmall" class="imgs" src="{{pickedTrail.imgMedium}}" alt="Trail img">
-      <img *ngIf="!pickedTrail.imgSmall" class="imgs" src="../../assets/default-trail.jpg" alt="Trail img">
+      <img *ngIf="pickedTrail.imgMedium" class="imgs" src="{{pickedTrail.imgMedium}}" alt="Trail image"
+        title="Image of {{pickedTrail.name}} Trail">
+      <!-- <img *ngIf="!pickedTrail.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image"> -->
     </div>
     <p>Stars:{{pickedTrail.stars}}</p>
-
-    <div class="extra-info">
-      <p>Difficulty:{{pickedTrail.difficulty}}</p>
-      <p>Votes:{{pickedTrail.starVotes}}</p>
-      <p>Summary:{{pickedTrail.summary}}</p>
-      <p>Length:{{pickedTrail.length}}</p>
-      <p>Condition:{{pickedTrail.conditionDetails}}</p>
-      <p>Condition Date:{{pickedTrail.conditionDate}}</p>
-      <p>Condition Status:{{pickedTrail.conditionStatus}}</p>
+    <div class="trail-stats extra-trail-info" [ngClass]="{'statsShown' : pickedTrail.statsShown}">
+      <h3 class="trail-info-summary-header">Summary</h3>
+      <p class="hike-summary">{{pickedTrail.summary}}</p>
+      <div class="trail-data-container">
+        <div class="trail-data-attribute">
+          <p>Difficulty: </p>
+          <p>Votes:</p>
+          <p>Length:</p>
+          <p>Condition:</p>
+          <p>Condition Date:</p>
+          <p>Condition Status:</p>
+        </div>
+        <div class="trail-data-value">
+          <p>{{pickedTrail.difficulty}}</p>
+          <p>{{pickedTrail.starVotes}}</p>
+          <p>{{pickedTrail.length}}</p>
+          <p>{{pickedTrail.conditionDetails}}</p>
+          <p>{{pickedTrail.conditionDate}}</p>
+          <p>{{pickedTrail.conditionStatus}}</p>
+        </div>
+      </div>
     </div>
-
     <!-- bird starts -->
-
-    <ul class="extra-info">
+    <ul class="extra-bird-info">
       <li class="bird-container" *ngFor="let bird of pickedTrail.trailBirds; index as i">
         <div class="bird-title">
-          <p>{{bird?.comName}}</p>
+          <h3 class="bird-name">{{bird?.comName}}</h3>
           <button class="spotted-button" (click)="addSpotted(bird)"><i class="fa fa-binoculars" aria-hidden="true"
               [ngClass]="{'spotted' : bird.addSpotted}"></i></button>
         </div>
         <div class="bird-images">
-          <img class="image" src="{{bird?.img1}}">
-          <img class="image" src="{{bird?.img2}}">
-          <img class="image" src="{{bird?.img3}}">
+          <img *ngIf="bird?.img1" class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}"
+            title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img1)">
+          <img *ngIf="!bird?.img1" class="bird" src="/assets/bird-text.JPG" alt="Image of {{bird.comName}}"
+            title="Image of {{bird.comName}}">
+          <img *ngIf=" bird?.img2" class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}"
+            title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img2)">
+          <img *ngIf=" bird?.img3" class="bird" src="{{bird?.img3}}" alt="Image of {{bird.comName}}"
+            title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img3)">
         </div>
-        <div class="audio-div">
-          <audio *ngIf="bird.sound" controls>
+        <div class=" audio-div">
+          <audio class="bird-audio" *ngIf="bird.sound" controls>
             <source src={{bird?.sound}}>
           </audio>
         </div>
+        <div [ngClass]="{'background-full-pic' : birdPicUrl}">
+          <img class="hide-pic" [src]="birdPicUrl" [ngClass]="{'full-pic' : birdPicUrl}" (click)="hideBirdPic()">
+        </div>
       </li>
+
     </ul>
 
     <!-- weather starts -->
-    <div class="extra-info">
+    <div class="extra-weather-info">
       <h2>{{ pickedTrail.weather?.name }}</h2>
 
       <!-- weather image -->
@@ -55,8 +79,5 @@
       <p>Feels like: {{ pickedTrail.weather?.main.feels_like }}°F</p>
       <p>Wind speed: {{ pickedTrail.weather?.wind.speed }}mph</p>
     </div>
-
-
   </div>
-
 </div>

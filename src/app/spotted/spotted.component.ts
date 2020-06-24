@@ -18,4 +18,6 @@ export class SpottedComponent implements OnInit {
     this.service.removeSpotted(index);
   }
 
+
+
 }

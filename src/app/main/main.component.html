@@ -14,7 +14,8 @@
       </div>
       <div class="main-header-container">
         <h1 class="main-header">Grab your binoculars!</h1>
-        <h2 class="sub-header">Search for a location to bird-watch and add birds to your spotted list as you find them.
+        <h2 #test class="sub-header">Search for a location to bird-watch and add birds to your spotted list as you find
+          them.
           Happy bird watching!
         </h2>
       </div>
@@ -22,7 +23,7 @@
   </div>
 
   <!-- trail starts -->
-  <ol class="hike-list" id="hike-list" #target>
+  <ol class="hike-list" id="hike-list">
     <li #card *ngFor="let item of trails; index as i" class="hike-box">
       <h1 class="hike-title">{{item.name}}</h1>
       <h3 class="hike-city">{{item.location}}</h3>
@@ -83,13 +84,13 @@
             <img *ngIf=" bird?.img3" class="bird" src="{{bird?.img3}}" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img3)">
           </div>
-          <div [ngClass]="{'background-full-pic' : birdPicUrl}">
-            <img class="hide-pic" [src]="birdPicUrl" [ngClass]="{'full-pic' : birdPicUrl}" (click)="hideBirdPic()">
-          </div>
           <div class=" audio-div">
             <audio class="bird-audio" *ngIf="bird.sound" controls>
               <source src={{bird?.sound}}>
             </audio>
+          </div>
+          <div [ngClass]="{'background-full-pic' : birdPicUrl}">
+            <img class="hide-pic" [src]="birdPicUrl" [ngClass]="{'full-pic' : birdPicUrl}" (click)="hideBirdPic()">
           </div>
         </li>
 

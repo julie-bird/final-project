@@ -1,8 +1,124 @@
+/* .background-container{
+  background-image: rgb(110,232,222);
+background-image: linear-gradient(4deg, rgba(110,232,222,1) 0%, rgba(233,233,233,1) 57%, rgba(253,253,253,1) 100%);
+ height: 100vh;
+width: 100%;
+z-index:-2;
+position: fixed;
+} */
+
+.background-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.main-container {
+  /* max-width: 800px; */
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: auto;
+}
+
+.bird {
+  width: 100px;
+  font-size: 8px;
+  object-fit: contain;
+  margin: 0 4px;
+}
+
+.bird-watching-img {
+  max-height: 200px;
+}
+
+.main-header {
+  display: flex;
+}
+
+.main-header-container {
+  background-color: #e7d2a2;
+  border: 1px solid #e7d2a2;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 0 0 10px gray;
+}
+
+.main-header {
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
+.sub-header {
+  font-size: 1rem;
+}
+
+.search-container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.img-summary-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-search {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.main-search-input {
+  border: none;
+  border-bottom: solid 1px black;
+  width: 350px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-family: 'Montserrat', sans-serif;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.main-search-input:focus {
+  outline: none;
+}
+
+.search-button {
+
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.search-button:focus {
+  outline: none;
+}
+
+.fa-search:hover {
+  color: black;
+}
+
+.fa-search {
+  font-size: 24px;
+  color: #a4a4a4;
+}
+
 .hike-list {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 100px;
 }
 
 .hike-box {
@@ -10,8 +126,9 @@
   flex-direction: column;
   align-items: center;
   border: 3px solid #3b5a9d;
-  width: 60%;
-  margin: 15px 0;
+  width: 80%;
+  max-width: 800px;
+  margin: 150px 0 15px 0;
   padding: 20px;
   background-color: #e7d2a2;
   border-radius: 6px;
@@ -22,14 +139,59 @@
   overflow: hidden;
 }
 
-.imgs {
-  max-width: 350px;
-  border: 1px solid black;
+.trail-stats {
+  display: none;
+  color: white;
+  align-items: flex-start;
+}
+
+.trail-info-summary-header {
+  border-bottom: 1px solid white;
+  margin-bottom: .5rem;
+}
+
+.trail-data-container {
+  display: flex;
 }
 
 .hike-summary {
   text-align: center;
+  margin-bottom: 1rem;
 }
+
+.trail-data-attribute {
+  margin-right: 1rem;
+  font-weight: bold
+}
+
+.trail-data-value {
+  font-size: 0.9rem;
+}
+
+.trail-data-value>p {
+  margin-bottom: 0.1rem;
+}
+
+.extra-trail-info {
+  flex-direction: column;
+  align-items: center;
+  background-color: #3b5a9d;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 20px;
+  max-width: 350px;
+  color: rgb(209, 209, 209);
+  margin-bottom: 1rem;
+
+}
+
+.imgs {
+  max-height: 500px;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid black;
+}
+
 
 .info-buttons-div {
   display: flex;
@@ -42,33 +204,43 @@
   background-color: #e7d2a2;
   border: none;
   padding: 5px;
+  font-size: .8rem;
 }
 
 .info-buttons:hover {
   border-bottom: 1px solid black;
+  border-radius: 0px;
 }
 
-.extra-info {
+
+.extra-bird-info {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #3b5a9d;
   border: 2px solid black;
   border-radius: 6px;
-  padding: 20px;
-  width: 80%;
-  color: #e7d2a2;
+  padding: 20px 20px;
+  color: rgb(209, 209, 209);
+  margin-bottom: 1rem;
+  /* max-width: 350px; */
 }
 
 .bird-container {
   margin: 15px 0;
   border-bottom: 1px solid black;
-  width: 400px;
+
 }
 
 .bird-title {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bird-name {
+  color: white;
+  font-size: 1.5rem;
 }
 
 .bird-images {
@@ -77,8 +249,31 @@
   margin: 10px 0;
 }
 
-.image {
-  width: 100px;
+.hide-pic {
+  display: none;
+}
+
+.full-pic {
+  display: flex;
+  height: auto;
+  max-height: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  max-width: 60%;
+  border: 3px solid white;
+  z-index: 5;
+}
+
+.background-full-pic {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.164);
 }
 
 .audio-div {
@@ -91,9 +286,6 @@
   margin: 10px 0;
 }
 
-.trail-stats {
-  display: none;
-}
 
 .statsShown {
   display: flex;
@@ -124,37 +316,22 @@
   display: flex;
 }
 
-.fa-binoculars {
-  font-size: 1.5rem;
-  color: white;
-}
-
-.fa-binoculars:hover { 
-  color: #9dc863;
-  opacity: .6;
-  border: 0px none #9dc863;
-}
-
-.spotted-button {
-  background-color:#3b5a9d ;
-  border-radius: 50px;
-  padding: 6px;
-  border: 2px solid #9cc8639a;
-  -webkit-appearance: none;
-    -moz-appearance: none;
-
-}
-.spotted-button:focus {
-  outline: none;
-}
-/* .spotted-button:hover{} */
-
-.spotted {
-  color: #9dc863;
+.extra-weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3b5a9d;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 20px;
+  max-width: 350px;
+  color: rgb(209, 209, 209);
+  margin-bottom: 1rem;
 }
 
 .weather-info {
   display: none;
+  color: white;
 }
 
 .weatherShown {
@@ -171,11 +348,79 @@
   display: flex;
 }
 
-/* .fa-binoculars {
+.fa-binoculars {
   font-size: 1.5rem;
+  color: white;
+}
+
+.fa-binoculars:hover {
+  color: #9dc863;
+  opacity: .6;
+  border: 0px none #9dc863;
 }
 
 .spotted-button {
   background-color: #3b5a9d;
-  border: none;
-} */
+  border-radius: 50px;
+  padding: 6px;
+  border: 2px solid #9cc8639a;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+}
+
+.spotted-button:focus {
+  outline: none;
+}
+
+/* .spotted-button:hover{} */
+
+.spotted {
+  color: #9dc863;
+}
+
+@media screen and (min-width: 768px) {
+
+  .search-container {
+    height: 50vh;
+
+  }
+
+  .img-summary-container {
+    flex-direction: row-reverse;
+    position: relative;
+  }
+
+  .main-header {
+    justify-content: left;
+  }
+
+  .sub-header {
+    width: 65%;
+  }
+
+  .fa-search {
+    font-size: 46px;
+  }
+
+  .search-button {
+    padding-bottom: 23px;
+  }
+
+  .bird-container {
+    width: 400px;
+  }
+
+  .bird-watching-img {
+    position: absolute;
+    top: -28%;
+    right: 10%;
+  }
+
+  .main-search-input {
+    width: 750px;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+}

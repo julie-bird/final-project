@@ -12,6 +12,7 @@ import { element } from 'protractor';
 })
 export class MainComponent implements OnInit {
   @ViewChildren("card") cards: any;
+  // @ViewChild("test") cards: any;
   data: any;
   trails: any = [];
   address: any = undefined;
@@ -37,22 +38,29 @@ export class MainComponent implements OnInit {
           let long = response.results[0].geometry.location.lng
           this.service.getTrails(lat, long).subscribe((response) => {
             this.trails = response.trails;
+            // console.log(this.cards._results)
           })
         })
       }
     })
   }
 
-  ngAfterViewInit() {
-    // this.scrollToElement();
-    console.log(this.cards)
-    
-  }
+  // ngAfterViewInit() {
+  //   // this.scrollToElement();
+  //   console.log(this.cards)
+  //   this.cards.changes.subscribe(response => {
+  //     console.log(response.first.nativeElement)
+  //     response.first.nativeElement.scrollIntoView({ behavior: "smooth", block: "center", })
+  //   })
+  //   // console.log(this.cards._results)
+
+  // }
 
   scrollToElement(): void {
-    console.log(this.cards);
-    console.log(this.cards._results[0])
-    this.cards._results[0].nativeElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    // console.log(this.cards);
+    // console.log(this.cards._results[0])
+    // this.cards._results[0].nativeElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    // .scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 
   }
 
