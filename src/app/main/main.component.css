@@ -399,6 +399,7 @@
 
   .bird-container {
     width: 400px;
+    padding: 5px;
   }
 
   .bird-watching-img {
@@ -412,5 +413,9 @@
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
+  }
+
+  .extra-bird-info {
+    align-items: center;
   }
 }

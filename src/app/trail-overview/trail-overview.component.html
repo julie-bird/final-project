@@ -3,40 +3,66 @@
 
 <div class="hike-list">
   <div class="hike-box">
+    <div class="trail-info-container">
+      <div class="trail-weather">
+        <div class="hike-info-container">
+          <h1 class="hike-title">{{pickedTrail.name}}</h1>
+          <h3 class="hike-city">{{pickedTrail.location}}</h3>
+          <p></p>
+          <div>
+            <img *ngIf="pickedTrail.imgMedium" class="imgs" src="{{pickedTrail.imgMedium}}" alt="Trail image"
+              title="Image of {{pickedTrail.name}} Trail">
+            <!-- <img *ngIf="!pickedTrail.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image"> -->
+          </div>
+          <h2 class="rating2">Rating</h2>
+          <h3 class="rating">Stars: {{pickedTrail.stars}}</h3>
 
-
-    <h1 class="hike-title">{{pickedTrail.name}}</h1>
-    <h3 class="hike-city">{{pickedTrail.location}}</h3>
-    <p></p>
-    <div>
-      <img *ngIf="pickedTrail.imgMedium" class="imgs" src="{{pickedTrail.imgMedium}}" alt="Trail image"
-        title="Image of {{pickedTrail.name}} Trail">
-      <!-- <img *ngIf="!pickedTrail.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image"> -->
-    </div>
-    <p>Stars:{{pickedTrail.stars}}</p>
-    <div class="trail-stats extra-trail-info" [ngClass]="{'statsShown' : pickedTrail.statsShown}">
-      <h3 class="trail-info-summary-header">Summary</h3>
-      <p class="hike-summary">{{pickedTrail.summary}}</p>
-      <div class="trail-data-container">
-        <div class="trail-data-attribute">
-          <p>Difficulty: </p>
-          <p>Votes:</p>
-          <p>Length:</p>
-          <p>Condition:</p>
-          <p>Condition Date:</p>
-          <p>Condition Status:</p>
         </div>
-        <div class="trail-data-value">
-          <p>{{pickedTrail.difficulty}}</p>
-          <p>{{pickedTrail.starVotes}}</p>
-          <p>{{pickedTrail.length}}</p>
-          <p>{{pickedTrail.conditionDetails}}</p>
-          <p>{{pickedTrail.conditionDate}}</p>
-          <p>{{pickedTrail.conditionStatus}}</p>
+
+        <div class="trail-stats extra-trail-info" [ngClass]="{'statsShown' : pickedTrail.statsShown}">
+          <h1 class="trail-info-summary-header">Summary</h1>
+          <div class="trail-summary-container">
+            <p class="hike-summary">{{pickedTrail.summary}}</p>
+            <div class="trail-data-container">
+              <div class="trail-data-attribute">
+                <p>Difficulty: </p>
+                <p>Votes:</p>
+                <p>Length (In Miles):</p>
+                <p>Condition:</p>
+                <p>Condition Date:</p>
+                <p>Condition Status:</p>
+              </div>
+              <div class="trail-data-value">
+                <p>{{pickedTrail.difficulty}}</p>
+                <p>{{pickedTrail.starVotes}}</p>
+                <p>{{pickedTrail.length}}</p>
+                <p>{{pickedTrail.conditionDetails}}</p>
+                <p>{{pickedTrail.conditionDate}}</p>
+                <p>{{pickedTrail.conditionStatus}}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- weather starts -->
+          <h1 class="trail-info-summary-header">Weather</h1>
+          <div class="extra-weather-info">
+            <h2>{{ pickedTrail.weather?.name }}</h2>
+
+            <!-- weather image -->
+            <img *ngIf="pickedTrail.weather"
+              src="http://openweathermap.org/img/wn/{{ (pickedTrail.weather.weather)[0].icon }}.png" alt="weather icon">
+
+            <p>Description: {{ pickedTrail.weather?.weather[0].description }}</p>
+            <p>Current temp: {{ pickedTrail.weather?.main.temp }}°F</p>
+            <p>Feels like: {{ pickedTrail.weather?.main.feels_like }}°F</p>
+            <p>Wind speed: {{ pickedTrail.weather?.wind.speed }}mph</p>
+          </div>
         </div>
       </div>
     </div>
+
     <!-- bird starts -->
+    <h1 class="birds-header">Birds</h1>
     <ul class="extra-bird-info">
       <li class="bird-container" *ngFor="let bird of pickedTrail.trailBirds; index as i">
         <div class="bird-title">
@@ -47,7 +73,7 @@
         <div class="bird-images">
           <img *ngIf="bird?.img1" class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}"
             title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img1)">
-          <img *ngIf="!bird?.img1" class="bird" src="/assets/bird-text.JPG" alt="Image of {{bird.comName}}"
+          <img *ngIf="!bird?.img1" class="bird" src="/assets/bird-image.JPG" alt="Default of {{bird.comName}}"
             title="Image of {{bird.comName}}">
           <img *ngIf=" bird?.img2" class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}"
             title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img2)">
@@ -66,18 +92,8 @@
 
     </ul>
 
-    <!-- weather starts -->
-    <div class="extra-weather-info">
-      <h2>{{ pickedTrail.weather?.name }}</h2>
 
-      <!-- weather image -->
-      <img *ngIf="pickedTrail.weather"
-        src="http://openweathermap.org/img/wn/{{ (pickedTrail.weather.weather)[0].icon }}.png" alt="weather icon">
 
-      <p>Description: {{ pickedTrail.weather?.weather[0].description }}</p>
-      <p>Current temp: {{ pickedTrail.weather?.main.temp }}°F</p>
-      <p>Feels like: {{ pickedTrail.weather?.main.feels_like }}°F</p>
-      <p>Wind speed: {{ pickedTrail.weather?.wind.speed }}mph</p>
-    </div>
+
   </div>
 </div>

@@ -5,6 +5,12 @@
   margin-top: 100px;
 }
 
+.empty-list {
+  font-size: 4rem;
+  background-color: tomato;
+  margin: 200px;
+}
+
 .bird-images-container {
   flex-wrap: wrap;
   justify-content: space-between;
