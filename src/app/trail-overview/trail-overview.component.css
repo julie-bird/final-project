@@ -115,6 +115,12 @@ position: fixed;
   color: #a4a4a4;
 }
 
+.trail-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .hike-list {
   display: flex;
   flex-direction: column;
@@ -127,7 +133,7 @@ position: fixed;
   align-items: center;
   border: 3px solid #3b5a9d;
   width: 80%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 150px 0 15px 0;
   padding: 20px;
   background-color: #e7d2a2;
@@ -139,16 +145,18 @@ position: fixed;
   overflow: hidden;
 }
 
-.trail-stats {
-  display: none;
-  color: white;
-  align-items: flex-start;
+.hike-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+
 .trail-info-summary-header {
-  border-bottom: 1px solid white;
   margin-bottom: .5rem;
+  text-align: center;
 }
+
 
 .trail-data-container {
   display: flex;
@@ -182,7 +190,19 @@ position: fixed;
   max-width: 350px;
   color: rgb(209, 209, 209);
   margin-bottom: 1rem;
+}
 
+.rating {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.rating2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 5px 0;
+  text-decoration: underline;
 }
 
 .imgs {
@@ -190,6 +210,12 @@ position: fixed;
   max-width: 100%;
   height: auto;
   border: 1px solid black;
+}
+
+.trail-summary-container {
+  border: 2px solid white;
+  border-radius: 6px;
+  padding: 20px;
 }
 
 
@@ -216,6 +242,7 @@ position: fixed;
 .extra-bird-info {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
   align-items: center;
   background-color: #3b5a9d;
   border: 2px solid black;
@@ -224,6 +251,10 @@ position: fixed;
   color: rgb(209, 209, 209);
   margin-bottom: 1rem;
   /* max-width: 350px; */
+}
+
+.birds-header {
+  font-size: 2.3rem;
 }
 
 .bird-container {
@@ -321,12 +352,11 @@ position: fixed;
   flex-direction: column;
   align-items: center;
   background-color: #3b5a9d;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 6px;
   padding: 20px;
   max-width: 350px;
   color: rgb(209, 209, 209);
-  margin-bottom: 1rem;
 }
 
 .weather-info {
@@ -408,7 +438,11 @@ position: fixed;
   }
 
   .bird-container {
-    width: 400px;
+    border: solid 1px white;
+    border-radius: 12px;
+    margin: 5px;
+    padding: 5px;
+    width: 350px;
   }
 
   .bird-watching-img {
@@ -423,4 +457,46 @@ position: fixed;
     font-size: 2.5rem;
     margin-bottom: 20px;
   }
+
+  .trail-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .extra-bird-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: normal;
+  }
+
+  .trail-weather {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .hike-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .extra-trail-info {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px;
+    flex: 1;
+  }
+
+  .trail-summary-container {
+    border: 2px solid white;
+    border-radius: 6px;
+    padding: 20px;
+  }
+
 }
