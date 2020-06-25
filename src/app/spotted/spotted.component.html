@@ -1,7 +1,10 @@
 <div class="bird-list-div">
   <ul class="bird-images-container">
     <li class="bird-item" *ngFor="let bird of spottedList; index as i">
-      <img class="image" src="{{bird?.img1}}">
+      <img *ngIf="bird?.img1" class="image" src="{{bird?.img1}}" alt="Image of {{bird.comName}}"
+        title="Image of {{bird.comName}}">
+      <img *ngIf="!bird?.img1" class="image" src="/assets/bird-image.JPG" alt="Image of {{bird.comName}}"
+        title="Image of {{bird.comName}}">
       <p class="name">{{bird?.comName}}</p>
       <button class="remove-button" (click)="removeBird(i)">Remove</button>
     </li>
