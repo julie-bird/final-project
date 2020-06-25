@@ -43,6 +43,8 @@
           [ngClass]="{'button-clicked' : birdButtonClicked}">Birds</button>
         <button class="info-buttons" (click)="seeWeatherInfo(i)"
           [ngClass]="{'button-clicked' : weatherButtonClicked}">Weather</button>
+        <button class="forecast-info-button info-buttons" (click)="seeFutureForecast(i)"
+          [ngClass]="{'button-clicked':forecastButtonClicked}">Five day Forecast</button>
       </div>
       <div class="trail-stats extra-trail-info" *ngIf="trailIndex == i">
         <h3 class="trail-info-summary-header">Summary</h3>
@@ -114,6 +116,10 @@
         <p>Wind speed: {{ item.weather?.wind.speed }}mph</p>
         <button (click)="hideWeatherInfo()">
           Hide Details </button>
+      </div>
+      <div class="forecast-info" *ngIf="forecastIndex == i">
+        <h2>{{item.forecast?.list[0].main.temp}}</h2>
+
       </div>
     </li>
   </ol>

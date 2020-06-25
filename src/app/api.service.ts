@@ -20,6 +20,7 @@ export class ApiService {
   imagesURL: string = "https://pixabay.com/api/";
   soundsURL: string = environment.apiBaseUrl;
   getTrailIdURL: string = "https://www.hikingproject.com/data/get-trails-by-id"
+  fiveDayForecast: string = "https://api.openweathermap.org/data/2.5/forecast"
 
 
   getTrails(lat, long): any {
@@ -66,6 +67,11 @@ export class ApiService {
 
   getWeather(lat: any, long: any): any {
     return this.http.get(this.weatherLatLong, {
+      params: { appid: this.weatherAPI, lat: lat, lon: long, units: "Imperial" }
+    });
+  }
+  getFutureForecast(lat: any, long: any): any {
+    return this.http.get(this.fiveDayForecast, {
       params: { appid: this.weatherAPI, lat: lat, lon: long, units: "Imperial" }
     });
   }
