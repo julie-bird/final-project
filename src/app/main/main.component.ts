@@ -23,6 +23,10 @@ export class MainComponent implements OnInit {
   birdIndex: number = null;
   birdPicUrl: string = null;
   weatherIndex: number = null;
+  trailIndex: number = null;
+  trailButtonClicked: boolean = false;
+  weatherButtonClicked: boolean = false;
+  birdButtonClicked: boolean = false;
   trailImgArray = ["/assets/hike1.jpg", "/assets/hike2.jpg", "/assets/hike3.jpg", "/assets/hike4.jpg", "/assets/hike5.jpg", "/assets/default-trail.jpg"]
 
   constructor(private service: ApiService, private router: Router, private route: ActivatedRoute, @Inject(DOCUMENT) document) { }
@@ -88,11 +92,17 @@ export class MainComponent implements OnInit {
 
   seeWeatherInfo(index: number) {
     this.weatherIndex = index;
-    this.getTrailWeather(index)
+    this.getTrailWeather(index);
+    this.weatherButtonClicked = true;
+    this.birdIndex = null;
+    this.trailIndex = null;
+    this.birdButtonClicked = false;
+    this.trailButtonClicked = false;
   }
 
   hideWeatherInfo() {
     this.weatherIndex = null;
+    this.weatherButtonClicked = false;
   }
 
   getTrailWeather(index: number) {
@@ -101,17 +111,24 @@ export class MainComponent implements OnInit {
     this.service.getWeather(trailLat, trailLon).subscribe((response) => {
       this.trails[index].weather = response
     });
+    this.birdIndex = null;
   };
 
   // Bird Methods
 
   seeBirdInfo(index: number) {
     this.birdIndex = index;
-    this.getBirdData(index)
+    this.getBirdData(index);
+    this.weatherIndex = null;
+    this.trailIndex = null;
+    this.birdButtonClicked = true;
+    this.weatherButtonClicked = false;
+    this.trailButtonClicked = false;
   }
 
   hideBirdInfo() {
     this.birdIndex = null;
+    this.birdButtonClicked = false;
   }
 
   seeBirdPic(pic: string) {
@@ -184,15 +201,18 @@ export class MainComponent implements OnInit {
     console.log(bird)
   }
 
-  seeTrailStats(trail: any) {
-    trail.statsShown = true;
-    trail.button = true
-    // console.log(trail)
+  seeTrailStats(index) {
+    this.trailIndex = index;
+    this.birdIndex = null;
+    this.weatherIndex = null;
+    this.trailButtonClicked = true;
+    this.birdButtonClicked = false;
+    this.weatherButtonClicked = false;
   }
 
-  hideTrailStats(trail: any) {
-    trail.statsShown = false;
-    trail.button = false
+  hideTrailStats() {
+    this.trailIndex = null;
+    this.trailButtonClicked = false;
   }
 
   trailOverviewPath(name: string, id: number, location: string) {

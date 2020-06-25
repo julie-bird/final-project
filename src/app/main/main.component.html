@@ -35,15 +35,16 @@
       </div>
       <button (click)="trailOverviewPath(item.name,item.id, item.location)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>
+      <!-- Buttons -->
       <div class="info-buttons-div">
-        <button class="trail-stats-button info-buttons" (click)="seeTrailStats(item)"
-          [ngClass]="{'hideButton' : item.button}">
-          Show More Trail Info</button>
-        <button class="bird-info-button info-buttons" (click)="seeBirdInfo(i)" *ngIf="birdIndex != i">More Bird
-          Info</button>
-        <button class="info-buttons" (click)="seeWeatherInfo(i)" *ngIf="weatherIndex != i">Show Weather Info</button>
+        <button class="trail-stats-button info-buttons" id="trail-button" (click)="seeTrailStats(i)"
+          [ngClass]="{'button-clicked' : trailButtonClicked}">Trail Info</button>
+        <button class="bird-info-button info-buttons" (click)="seeBirdInfo(i)"
+          [ngClass]="{'button-clicked' : birdButtonClicked}">Birds</button>
+        <button class="info-buttons" (click)="seeWeatherInfo(i)"
+          [ngClass]="{'button-clicked' : weatherButtonClicked}">Weather</button>
       </div>
-      <div class="trail-stats extra-trail-info" [ngClass]="{'statsShown' : item.statsShown}">
+      <div class="trail-stats extra-trail-info" *ngIf="trailIndex == i">
         <h3 class="trail-info-summary-header">Summary</h3>
         <p class="hike-summary">{{item.summary}}</p>
         <div class="trail-data-container">
@@ -64,7 +65,7 @@
             <p>{{item.conditionStatus}}</p>
           </div>
         </div>
-        <button (click)="hideTrailStats(item)" [ngClass]="{'trailStats' : item.trailStats}"> Hide Details </button>
+        <button (click)="hideTrailStats()" [ngClass]="{'trailStats' : item.trailStats}"> Hide Details </button>
       </div>
       <!-- bird starts -->
       <ul class="extra-bird-info" *ngIf="birdIndex == i">
@@ -77,7 +78,7 @@
           <div class="bird-images">
             <img *ngIf="bird?.img1" class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img1)">
-            <img *ngIf="!bird?.img1" class="bird" src="/assets/bird-text.JPG" alt="Image of {{bird.comName}}"
+            <img *ngIf="!bird?.img1" class="bird" src="/assets/default-bird.JPG" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}">
             <img *ngIf=" bird?.img2" class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img2)">
@@ -104,7 +105,6 @@
       <div class="extra-weather-info" *ngIf="weatherIndex == i">
         <h2>{{ item.weather?.name }}</h2>
 
-        <!-- weather image -->
         <img *ngIf="item.weather" src="http://openweathermap.org/img/wn/{{ (item.weather.weather)[0].icon }}.png"
           alt="weather icon">
 
