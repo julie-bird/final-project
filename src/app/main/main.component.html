@@ -34,7 +34,7 @@
         <img *ngIf="!item.imgMedium" class="imgs" [src]="choosePic(i)" alt="Default Trail Image">
       </div>
       <button (click)="trailOverviewPath(item.name,item.id, item.location)">Trail Overview</button>
-      <p>Stars:{{item.stars}}</p>
+      <p class="rating">Rating: {{item.stars}}/5 Stars</p>
       <!-- Buttons -->
       <div class="info-buttons-div">
         <button class="trail-stats-button info-buttons" id="trail-button" (click)="seeTrailStats(i)"

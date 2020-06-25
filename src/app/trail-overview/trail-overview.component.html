@@ -12,10 +12,8 @@
           <div>
             <img *ngIf="pickedTrail.imgMedium" class="imgs" src="{{pickedTrail.imgMedium}}" alt="Trail image"
               title="Image of {{pickedTrail.name}} Trail">
-            <!-- <img *ngIf="!pickedTrail.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image"> -->
+            <img *ngIf="!pickedTrail.imgMedium" class="imgs" src="./assets/hike2.jpg" alt="Default Trail Image">
           </div>
-          <h2 class="rating2">Rating</h2>
-          <h3 class="rating">Stars: {{pickedTrail.stars}}</h3>
 
         </div>
 
@@ -25,20 +23,22 @@
             <p class="hike-summary">{{pickedTrail.summary}}</p>
             <div class="trail-data-container">
               <div class="trail-data-attribute">
+                <p>Rating:</p>
                 <p>Difficulty: </p>
                 <p>Votes:</p>
-                <p>Length (In Miles):</p>
-                <p>Condition:</p>
+                <p>Length:</p>
+                <!-- <p>Condition:</p>
                 <p>Condition Date:</p>
-                <p>Condition Status:</p>
+                <p>Condition Status:</p> -->
               </div>
               <div class="trail-data-value">
+                <p>{{pickedTrail.stars}} Stars</p>
                 <p>{{pickedTrail.difficulty}}</p>
                 <p>{{pickedTrail.starVotes}}</p>
-                <p>{{pickedTrail.length}}</p>
-                <p>{{pickedTrail.conditionDetails}}</p>
+                <p>{{pickedTrail.length}} Miles</p>
+                <!-- <p>{{pickedTrail.conditionDetails}}</p>
                 <p>{{pickedTrail.conditionDate}}</p>
-                <p>{{pickedTrail.conditionStatus}}</p>
+                <p>{{pickedTrail.conditionStatus}}</p> -->
               </div>
             </div>
           </div>
