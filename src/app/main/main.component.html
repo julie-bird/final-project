@@ -31,7 +31,7 @@
       <div>
         <img *ngIf="item.imgMedium" class="imgs" src="{{item.imgMedium}}" alt="Trail image"
           title="Image of {{item.name}} Trail">
-        <!-- <img *ngIf="!item.imgMedium" class="imgs" [src]="choosePic()" alt="Default Trail Image"> -->
+        <img *ngIf="!item.imgMedium" class="imgs" [src]="choosePic(i)" alt="Default Trail Image">
       </div>
       <button (click)="trailOverviewPath(item.name,item.id, item.location)">Trail Overview</button>
       <p>Stars:{{item.stars}}</p>
@@ -53,15 +53,15 @@
             <p>Votes:</p>
             <p>Length:</p>
             <p>Condition:</p>
-            <p>Condition Date:</p>
-            <p>Condition Status:</p>
+            <!-- <p>Condition Date:</p>
+            <p>Condition Status:</p> -->
           </div>
           <div class="trail-data-value">
             <p>{{item.difficulty}}</p>
             <p>{{item.starVotes}}</p>
-            <p>{{item.length}}</p>
-            <p>{{item.conditionDetails}}</p>
-            <p>{{item.conditionDate}}</p>
+            <p>{{item.length}} miles</p>
+            <!-- <p>{{item.conditionDetails}}</p>
+            <p>{{item.conditionDate}}</p> -->
             <p>{{item.conditionStatus}}</p>
           </div>
         </div>
@@ -78,7 +78,7 @@
           <div class="bird-images">
             <img *ngIf="bird?.img1" class="bird" src="{{bird?.img1}}" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img1)">
-            <img *ngIf="!bird?.img1" class="bird" src="/assets/default-bird.JPG" alt="Image of {{bird.comName}}"
+            <img *ngIf="!bird?.img1" class="default-bird" src="/assets/default-bird.JPG" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}">
             <img *ngIf=" bird?.img2" class="bird" src="{{bird?.img2}}" alt="Image of {{bird.comName}}"
               title="Image of {{bird.comName}}" (click)="seeBirdPic(bird?.img2)">

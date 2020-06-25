@@ -16,9 +16,16 @@
 }
 
 .bird {
+  height: 65px;
   width: 100px;
   font-size: 8px;
-  object-fit: contain;
+  object-fit: cover;
+  margin: 0 4px;
+}
+.default-bird {
+  height: 65px;
+  width: 100px;
+  font-size: 8px;
   margin: 0 4px;
 }
 
@@ -276,6 +283,7 @@
 .bird-audio {
   height: 35px;
   margin: 10px 0;
+  outline: none;
 }
 
 
