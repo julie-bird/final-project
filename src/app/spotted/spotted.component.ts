@@ -7,7 +7,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['./spotted.component.css']
 })
 export class SpottedComponent implements OnInit {
-  spottedList: any = ["empty"];
+  spottedList: any = [];
 
   constructor(private service: ApiService) { }
 

@@ -12,4 +12,15 @@
     </li>
   </ul>
 </div>
-<!-- <p class="empty-list" *ngIf=" bird == '' "> You Havent Spotted Anything Yet</p> -->
+<div class="no-spot" *ngIf=" spottedList == '' ">
+  <img class="bird-watching-img" src="/assets/bird-watching.png" alt="" srcset="">
+  <div class="main-header-container">
+    <h1 class="main-header">Nothing to see here!</h1>
+    <h2 #test class="sub-header">Add birds to your spotted list by clicking on the binocular icon.
+      <i class="fa fa-binoculars spotted-button" aria-hidden="true"></i>
+    </h2>
+    <h2 #test class="sub-header2">What’s another name for a clever duck? A wise quacker!</h2>
+
+  </div>
+
+</div>

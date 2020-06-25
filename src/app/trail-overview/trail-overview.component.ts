@@ -18,7 +18,6 @@ export class TrailOverviewComponent implements OnInit {
     this.route.queryParams.subscribe(response1 => {
 
       this.service.getTrailsById(response1.trailid).subscribe(response2 => {
-        console.log(response2.trails[0].latitude)
         let trailLat = response2.trails[0].latitude;
         let trailLon = response2.trails[0].longitude;
         this.service.getWeather(trailLat, trailLon).subscribe((response3) => {
@@ -44,9 +43,7 @@ export class TrailOverviewComponent implements OnInit {
             })
           })
         });
-        // console.log(response2)
         this.pickedTrail = response2.trails[0]
-        console.log(this.pickedTrail)
       })
 
     })

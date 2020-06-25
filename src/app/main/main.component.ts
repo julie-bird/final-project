@@ -33,7 +33,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.newArray = this.service.getSpotted();
-    // console.log(this.newArray)
 
     this.route.queryParams.subscribe((response) => {
       if (response.location) {
@@ -42,7 +41,6 @@ export class MainComponent implements OnInit {
           let long = response.results[0].geometry.location.lng
           this.service.getTrails(lat, long).subscribe((response) => {
             this.trails = response.trails;
-            // console.log(this.cards._results)
           })
         })
       }
@@ -51,18 +49,13 @@ export class MainComponent implements OnInit {
 
   // ngAfterViewInit() {
   //   // this.scrollToElement();
-  //   console.log(this.cards)
   //   this.cards.changes.subscribe(response => {
-  //     console.log(response.first.nativeElement)
   //     response.first.nativeElement.scrollIntoView({ behavior: "smooth", block: "center", })
   //   })
-  //   // console.log(this.cards._results)
 
   // }
 
   scrollToElement(): void {
-    // console.log(this.cards);
-    // console.log(this.cards._results[0])
     // this.cards._results[0].nativeElement.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
     // .scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 
@@ -92,7 +85,6 @@ export class MainComponent implements OnInit {
     } else {
       image = this.trailImgArray[index];
     }
-    console.log(image)
     return image;
   }
 
@@ -152,9 +144,7 @@ export class MainComponent implements OnInit {
     let trailLon = this.trails[index].longitude;
     this.service.getBirdData(trailLat, trailLon).subscribe(res => {
       this.trails[index].trailBirds = res;
-      console.log(this.trails[index].trailBirds)
       this.trails[index].trailBirds.forEach((birdObj) => {
-        console.log(birdObj)
         let bird = birdObj.comName
         this.service.getImages(bird).subscribe(res => {
           if (res.hits.length > 0) {
@@ -171,12 +161,10 @@ export class MainComponent implements OnInit {
         this.newArray.forEach((object) => {
           if (object.comName === bird) {
             birdObj.addSpotted = true;
-            console.log(object)
           }
         })
       })
     });
-    // console.log(this.trails)
   }
 
   // Spotted List Methods
@@ -206,7 +194,6 @@ export class MainComponent implements OnInit {
         bird.addSpotted = true;
       }
     };
-    console.log(bird)
   }
 
   seeTrailStats(index) {

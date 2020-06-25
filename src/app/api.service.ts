@@ -84,7 +84,6 @@ export class ApiService {
 
   pushSpotted(bird: any): void {
     this.spottedList.push(bird);
-    console.log(this.spottedList)
   }
 
   removeSpotted(index: number): void {
@@ -96,7 +95,6 @@ export class ApiService {
 
   setTrail(trail): any {
     this.pickedTrail = trail;
-    console.log(this.pickedTrail)
   }
 
   getTrail(): any {
