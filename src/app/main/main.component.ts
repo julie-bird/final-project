@@ -83,9 +83,17 @@ export class MainComponent implements OnInit {
     })
   };
 
-  choosePic(): string {
-    let randomNum = Math.floor((Math.random() * this.trailImgArray.length));
-    return this.trailImgArray[randomNum];
+  choosePic(index): string {
+    // let randomNum = Math.floor((Math.random() * this.trailImgArray.length));
+    // return this.trailImgArray[randomNum];
+    let image = null;
+    if (index > this.trailImgArray.length - 1) {
+      image = this.trailImgArray[index - 5]
+    } else {
+      image = this.trailImgArray[index];
+    }
+    console.log(image)
+    return image;
   }
 
   // Weather Methods
